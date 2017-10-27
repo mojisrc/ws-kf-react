@@ -1,0 +1,784 @@
+html {
+    min-width: 1270px;
+    min-height: 600px;
+}
+.ant-layout .ant-layout-sider{
+    z-index: 100;
+}
+#root{
+    height: 100%;
+}
+body{
+    font-size: PingFangSC-Medium;
+    background: #f3f3f3;
+    /*font-size: 15px;*/
+    color: #666;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+.HomeHealthCare .modifyListBody .am-list .am-list-body{
+    background-color: #f5f5f9;
+    border-top: 0;
+}
+.HomeHealthCare .modifyListBody .am-list .am-list-body:after{
+    border-bottom: 0;
+}
+/*antd carousel*/
+.home-carousel,
+.goods-carousel {
+    background: #fff;
+}
+.home-carousel a,
+.goods-carousel a {
+    display: inline-block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.home-carousel a img,
+.goods-carousel a img {
+    width: 100%;
+    vertical-align: top;
+}
+.goods-carousel .slider-list{
+    height: auto!important;
+}
+.goods-carousel .slider-decorator-0{
+    bottom: 0.2rem!important;
+}
+
+
+
+/*antd badge*/
+.am-badge .am-badge-text{
+    background-color: #f76260;
+}
+
+/*antd tabBar*/
+#root .am-tab-bar-bar {
+    box-shadow: 0 -0.05rem 0.15rem 0 rgba(0,0,0,.05);
+    border-top: 0;
+}
+body .am-list-item.am-input-item:after {
+    border-bottom: 1px solid #eaeaea;
+}
+.am-tabs .am-tabs-bar .am-tabs-tab{
+    height: 1rem;
+    line-height: 1rem;
+    color: #999;
+    font-size: 0.32rem;
+    border-bottom: 0;
+    letter-spacing: 0.02rem;
+}
+.am-tabs .am-tabs-bar .am-tabs-tab-active{
+    color: #9c6e4e;
+}
+.am-tabs .am-tabs-ink-bar{
+    background-color: #9c6e4e;
+    left: 0.95rem;
+    width: 0.8rem!important;
+}
+
+
+/*antd stepper*/
+.am-stepper .am-stepper-handler {
+    border-radius: 50%!important;
+    border: 1px solid #eaeaea;
+}
+.am-stepper .am-stepper-handler,
+.am-stepper .am-stepper-handler-up-inner,
+.am-stepper .am-stepper-handler-down-inner {
+    width: 0.44rem;
+    height: 0.44rem;
+    line-height: 0.44rem;
+}
+.modifyStepper .am-stepper.showNumber {
+    width: 1.64rem;
+}
+.modifyStepper .am-stepper .am-icon-xxs {
+    width: 0.21rem;
+}
+.modifyStepper .am-stepper{
+    height: 0.46rem;
+    line-height: 0.46rem;
+}
+.am-stepper .am-stepper-input-wrap {
+    height: 0.44rem;
+    line-height: 0.44rem;
+}
+
+/*antd nav*/
+#root .am-navbar-light {
+    color: #9c6e4e;
+    box-shadow: 0 0.05rem 0.15rem 0 rgba(0,0,0,.05);
+    z-index: 100;
+}
+#root .am-navbar-light .am-navbar-title{
+    color: #9c6e4e;
+    font-size: 0.32rem;
+}
+.HomeNavHeader .am-search .am-search-input{
+    border-radius: 0.3rem;
+}
+.HomeNavHeader .am-search .am-search-cancel {
+    padding-left: 0.3rem;
+    color: #fff;
+}
+.MallSearch .am-search .am-search-input{
+    border-radius: 0.3rem;
+    background-color: #f8f8f8;
+}
+.MallSearch .am-search .am-search-cancel {
+    padding-left: 0.3rem;
+    color: #ccc;
+}
+
+/*antd list*/
+.am-list .am-list-body {
+    border-top: 1PX solid #eaeaea;
+}
+.am-list .am-list-body:after,
+.am-list .am-list-body div:not(:last-child) .am-list-line:after{
+    border-bottom: 1PX solid #eaeaea;
+}
+.am-list .am-list-item .am-list-line .am-list-content{
+    color: #333;
+}
+.am-list .am-list-item .am-list-line .am-list-extra{
+    font-size: 0.28rem;
+    color: #999;
+}
+
+
+/*UserPersonalInfo*/
+.UserPersonalInfo .am-list .am-list-item .am-list-line .am-list-content {
+    font-size: 0.32rem;
+}
+.UserPersonalInfo .am-list .am-list-body {
+    border-top: 0;
+}
+.UserPersonalInfo .am-list .am-list-body:after {
+    border-bottom: 0;
+}
+.UserPersonalInfo .am-list-item img{
+    width: 0.72rem;
+    height: 0.72rem;
+    border-radius: 50%;
+    border: 1px solid #eaeaea;
+}
+
+/*userindex*/
+.userEditName .am-list-item.am-input-item{
+    height: 1.2rem;
+}
+.userEditName .am-list-item.am-input-item:after{
+    border-bottom: 0;
+}
+
+
+/*userindex*/
+.UserIndex .am-list .am-list-body,
+.userSettings .am-list .am-list-body,
+.userProblem .am-list .am-list-body {
+    border-top: 0;
+}
+.UserIndex .userTopList .am-list-item img{
+    width: 1.1rem;
+    height: 1.1rem;
+    border-radius: 50%;
+    border: 1px solid #eaeaea;
+}
+.UserIndex .userTopList .am-list-item .am-list-line .am-list-content .username{
+    font-size: 0.32rem;
+    font-weight: 500;
+}
+.UserIndex .userTopList .am-list-item .am-list-line .am-list-brief .phone{
+    padding: 0.08rem 0.18rem;
+    background-color: #f8f8f8;
+    border-radius: 1rem;
+    font-size: 0.26rem;
+    color: #ccc;
+}
+.UserIndex .userTopList .am-list-item .am-list-line .am-list-brief .userPhone{
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    color: #9c6e4e;
+    padding: 0 0.18rem;
+    border-radius: 1rem;
+}
+.UserIndex .userTopList .am-list-item .am-list-line .am-list-brief{
+    overflow: initial;
+}
+
+.UserIndex .UserIndexListMid .am-list-item img,
+.UserIndex .UserIndexListBot .am-list-item img{
+    width: 0.4rem;
+    height: 0.4rem;
+}
+.UserIndex .OrderBarList .am-list-item img{
+    width: 0.32rem;
+    height: 0.36rem;
+}
+.UserIndex .UserIndexListBot .am-list-item .am-list-line .am-list-extra{
+    overflow: initial;
+}
+.UserIndex .UserIndexListMid .am-list .am-list-body:after,
+.UserIndex .UserIndexListBot .am-list .am-list-body:after,
+.UserIndex .userTopList .am-list-body:after{
+    border-bottom: 0;
+}
+
+
+
+/*userLoginRegister*/
+.userLoginRegister .navTopIcon{
+  position: absolute;
+  top: 0.3rem;
+  left: 0.15rem;
+  width: 0.62rem;
+  height: 0.62rem;
+  color: #333;
+}
+.userLoginRegister .navBottomBtn{
+  width: 49%;
+  border: 0;
+  border-radius: 0;
+  border-right: 0.02rem solid #fff;
+  background-color: rgba(255,255,255,0);
+  font-size: 0.26rem;
+  height: 0.32rem;
+  line-height: 0.32rem;
+}
+.userLoginRegister .navBottomBtn:last-child{
+  border-right: 0;
+}
+.userLoginRegister .am-list-item.am-input-item{
+  height: 1.2rem;
+  padding-left: 0;
+  width: 78%;
+}
+.userLoginRegister .am-list-item.am-input-item:after{
+  left: 0;
+}
+.userLoginRegister .am-list-item .am-input-control input{
+  font-size: 0.26rem;
+}
+.userLoginRegister .submitBtn{
+  width: 84%;
+  border: 0;
+  border-radius: 0;
+  background-color: #ff585d;
+  color: #fff;
+  margin: 0.6rem 0;
+  font-size: 0.3rem;
+}
+.userLoginRegister .am-list-item .am-input-label{
+  color: #ff585d;
+  position: absolute;
+  right: 0;
+  top: 40%;
+  font-size: 0.26rem;
+  text-align: right;
+}
+
+/*MallIndex*/
+
+.MallIndex .am-list .am-list-body{
+    border-top: 0;
+}
+.MallIndex .am-list .am-list-body:after{
+    border-bottom: 0;
+}
+.MallIndex .am-tabs-ink-bar{
+    height: 0;
+}
+.MallIndex .am-tabs-bar{
+    height: 1rem;
+    padding: 0 0.3rem;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0 0.05rem 0.15rem 0 rgba(0,0,0,.05);
+    z-index: 10;
+}
+.MallIndex .am-tabs-bar .am-tabs-tab{
+    color: #9c6e4e;
+    border: 1px solid #eaeaea;
+    width: 1.5rem;
+    height: 0.56rem;
+    font-size: 0.28rem;
+    border-radius: 0.38rem;
+    flex: inherit;
+    margin-right: 0.3rem;
+}
+.MallIndex .am-tabs-bar .am-tabs-tab-active{
+    color: #fff;
+    background-color: #9c6e4e;
+}
+
+/*userProblem*/
+.userProblem .am-list .am-list-item .am-list-line .am-list-content{
+  font-size: 0.3rem;
+}
+.userProblem .am-list .am-list-item .am-list-line .am-list-content .am-list-brief{
+  font-size: 0.25rem;
+}
+
+
+/*UserBindPhone*/
+.am-modal-body .am-list-item.am-input-item{
+    background-color: #f8f8f8;
+    border-radius: 0.1rem;
+}
+.am-modal-body .am-list-item.am-input-item:after{
+    border-bottom: 0;
+}
+.am-modal-body .am-list-item .am-input-control input{
+    font-size: 0.28rem;
+}
+.am-modal-body .am-list-item .am-input-label{
+    position: absolute;
+    right: 0;
+}
+.am-modal-footer .am-modal-button-group-h .am-modal-button{
+    color: #9c6e4e;
+    font-size: 0.32rem;
+}
+.UserBindPhone .removeLine.am-input-item:after{
+    border-bottom: 0;
+}
+.UserBindPhone .am-list-item.am-input-item{
+    height: 1rem;
+}
+.UserBindPhone .am-list-item .am-input-label{
+    position: absolute;
+    right: 0;
+    top: 0.3rem;
+    font-size: 0.32rem;
+}
+.UserBindPhone .am-list-item .am-input-control input{
+    font-size: 0.28rem;
+}
+
+/*UserBalance*/
+.UserBalance .radio-button-item{
+    width: 48%;
+    margin-top: 0.3rem;
+    margin-right: 4%;
+    line-height: 0.72rem;
+    font-size: 0.32rem;
+    box-sizing: border-box;
+}
+.UserBalance .radio-button-item:nth-child(2n){
+    margin-right: 0;
+}
+.UserBalance .not-checked{
+    background-color: #ffffff;
+    border-color: #eaeaea;
+}
+.UserBalance .checked{
+    background-color: #9c6e4e;
+}
+.UserBalance .radio-dot:before {
+    width: 0;
+    height: 0;
+    border: 0;
+    top: 0;
+    left: 0;
+}
+.UserBalance .radio-dot:after {
+    width: 0;
+    height: 0;
+    border: 0;
+    top: 0;
+    left: 0;
+}
+.UserBalance .radio-button-item > input[type="radio"] {
+    display: none;
+}
+.UserBalance .radio-button-item-word {
+    margin-left: 0;
+    font-size: 0.32rem;
+    letter-spacing: 0.026rem;
+    color: #9c6e4e;
+}
+.UserBalance .am-list-item.am-input-item:after {
+    border-bottom: 0;
+}
+.UserBalance .am-list-item .am-input-control input {
+    color: #ccc;
+    font-size: 0.28rem;
+    text-align: center;
+}
+
+/*UserBalanceDeatil*/
+.UserBalanceDeatil .am-list .am-list-body:after{
+    border-bottom: 0;
+}
+.UserBalanceDeatil .am-list .am-list-body{
+    border-top: 0;
+}
+.UserBalanceDeatil .am-list-item .am-list-line .am-list-content{
+    font-size: 0.32rem;
+    font-weight: 500;
+}
+.UserBalanceDeatil .am-list-item .am-list-line .am-list-brief{
+    font-size: 0.24rem;
+    color: #999;
+}
+.UserBalanceDeatil .am-list .am-list-item .am-list-line .am-list-extra{
+    font-size: 0.32rem;
+    color: #9c6e4e;
+    font-weight: 500;
+}
+
+
+/*UserIntegral*/
+.UserIntegral .am-list-item{
+    background-color: rgb(57,64,77);
+}
+.UserIntegral .am-list-item .am-list-line{
+    height: 2.5rem;
+}
+.UserIntegral .am-list .am-list-body:after{
+    border-bottom: 0;
+}
+.UserIntegral .am-list .am-list-body{
+    border-top: 0;
+}
+.UserIntegral .am-list .am-list-item .am-list-line .am-list-content{
+    color: rgba(255,255,255,.5);
+    font-size: 0.28rem;
+    letter-spacing: 0.02rem;
+}
+.UserIntegral .am-list-item .am-list-line .am-list-brief{
+    font-size: 0.774rem;
+    color: #fff;
+    letter-spacing: 0.062rem;
+}
+.UserIntegral .am-list .am-list-item .am-list-line .am-list-extra{
+    font-size: 0.32rem;
+    color: #fff;
+}
+.UserIntegral .am-tabs .am-tabs-ink-bar {
+    left: 1.3rem;
+    width: 1.5rem!important;
+}
+
+/*UserIntegralDeatil*/
+.UserIntegralDeatil .am-tabs .am-tabs-ink-bar {
+    left: 1.63rem;
+}
+.UserIntegralDeatil .am-list .am-list-body:after{
+    border-bottom: 0;
+}
+.UserIntegralDeatil .am-list .am-list-body{
+    border-top: 0;
+}
+.UserIntegralDeatil .am-list-item .am-list-line .am-list-content{
+    font-size: 0.32rem;
+    font-weight: 500;
+}
+.UserIntegralDeatil .am-list-item .am-list-line .am-list-brief{
+    font-size: 0.24rem;
+    color: #999;
+}
+.UserIntegralDeatil .am-list .am-list-item .am-list-line .am-list-extra{
+    font-size: 0.32rem;
+    color: #9c6e4e;
+    font-weight: 500;
+}
+
+
+/*userCardActivate*/
+.userCardActivate .am-list-item:last-child::after{
+    border-bottom: 0;
+}
+.userCardActivate .am-list-item .am-input-control input{
+    font-size: 0.32rem;
+    color: #ccc;
+}
+.userCardActivate .am-list-item .am-input-label{
+    position: absolute;
+    right: 0.3rem;
+    font-size: 0.32rem;
+    color: #9c6e4e;
+}
+
+/*UserReceivePackages*/
+.UserReceivePackagesPopup .am-list-header {
+    padding: 0;
+    height: 1rem;
+    line-height: 1rem;
+    font-size: 0.32rem;
+    color: #333;
+    text-align: center;
+    background-color: rgb(244,244,244);
+}
+.UserReceivePackagesPopup .popup-title .popup-close {
+    width: 0.15rem;
+    padding: 0.12rem 0.13rem;
+    border: 1px solid #eaeaea;
+    border-radius: 50%;
+}
+.UserReceivePackagesPopup  .popup-list .ruleItem-title{
+    color: #333;
+    margin: 0;
+    font-size: 0.28rem;
+    line-height: 0.7rem;
+    letter-spacing: 0.03rem;
+    font-weight: 500;
+}
+.UserReceivePackagesPopup  .popup-list .ruleChildItem-title{
+    color: #999;
+    font-size: 0.24rem;
+    line-height: 0.44rem;
+}
+.UserReceivePackagesPopup  .popup-list .ruleChildItem-title img{
+    width: 0.14rem;
+    height: 0.14rem;
+    margin-right: 0.17rem;
+}
+
+/*userAddress Add Edit*/
+.address .am-list .am-list-body {
+    border-top: 0;
+}
+.address .am-list .am-list-body:after {
+    border-bottom: 0;
+}
+.address .am-list-item .am-input-label,
+.address .am-list-item .am-input-control input,
+.address .am-list-item .am-list-line .am-list-content {
+    font-size: 0.32rem;
+}
+
+/*mallOrderAction*/
+.mallOrderAction .am-list .am-list-body {
+    border-top: 0;
+}
+.mallOrderAction .am-list .am-list-body:after {
+    border-bottom: 0;
+}
+.mallOrderAction .am-list .am-list-item.am-textarea-item {
+    background-color: #f8f8f8;
+}
+.mallOrderAction .am-textarea-control textarea {
+    font-size: 0.24rem;
+    border-radius: 0.06rem;
+}
+.mallOrderAction .am-list-item .am-list-line .am-list-content {
+    white-space: normal;
+}
+
+
+/*payIndex*/
+.payIndex .am-list-item img {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 0.06rem;
+}
+.payIndex .am-list .am-list-body:after{
+    border-bottom: 0;
+}
+
+
+/*UserOrderListView*/
+.UserOrderListView .am-tabs .am-tabs-ink-bar {
+    left: 0.3rem;
+    width: 0.96rem!important;
+}
+.UserOrderListView .userOrderListView-child .am-tabs-ink-bar{
+    height: 0;
+}
+.UserOrderListView .userOrderListView-child .am-tabs-bar{
+    height: 1rem;
+    padding: 0 0.3rem;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #f8f8f8;
+    z-index: 10;
+}
+.UserOrderListView .userOrderListView-child .am-tabs-bar .am-tabs-tab{
+    background-color: #f8f8f8;
+    color: #9c6e4e;
+    border: 1px solid #eaeaea;
+    width: 1.5rem;
+    height: 0.56rem;
+    font-size: 0.28rem;
+    border-radius: 0.38rem;
+    flex: inherit;
+    margin-right: 0.3rem;
+}
+.UserOrderListView .userOrderListView-child .am-tabs-bar .am-tabs-tab-active{
+    color: #fff;
+    background-color: #9c6e4e;
+}
+.UserOrderListView .am-list .am-list-body{
+    border-top: 0;
+    background-color: #f5f5f9;
+}
+.UserOrderListView .UserOrderListItem{
+    margin-top: 0.16rem;
+}
+.UserOrderListView .userOrderListView-child .am-list{
+    margin-top: 0;
+}
+.UserOrderListView .am-list-item .am-list-line .am-list-content{
+    white-space: normal;
+}
+.UserOrderListView .am-list .am-list-body:after{
+    border-bottom: 0;
+}
+.UserOrderListView .am-list .am-list-body .am-list-item:last-child .am-list-line:after{
+    border-bottom: 0;
+}
+
+
+/*userCollect*/
+.userCollect .am-list .am-list-body{
+    border-top: 0;
+}
+.userCollect .am-list .am-list-body:after{
+    border-bottom: 0;
+}
+
+
+/*userOrderDetail*/
+.userOrderDetail .am-list .am-list-body {
+    border-top: 0;
+}
+.userOrderDetail .am-list .am-list-body:after {
+    border-bottom: 0;
+}
+.userOrderDetail .am-list-item .am-list-line .am-list-content {
+    white-space: normal;
+}
+.userOrderDetail .orderLogList .am-list-body{
+    background-color: #f8f8f8;
+}
+.userOrderDetail .orderLogList .am-list-body .orderLogListItem{
+    margin-bottom: 0.16rem;
+}
+.userOrderDetail .orderLogList .am-list-body .orderLogListItem .am-list-line:after{
+    border-bottom: 0;
+}
+
+
+
+
+/*UserCard*/
+.UserCard .am-tabs .am-tabs-ink-bar {
+    left: 1.3rem;
+    width: 1.5rem!important;
+}
+.UserCard .am-list .am-list-body{
+    border-top: 0;
+    background-color: #f5f5f9;
+}
+.UserCard .am-tabs-bar {
+    margin-bottom: 0.2rem;
+}
+.UserCard .am-list-body:after {
+    border-bottom: 0;
+}
+
+
+/*mallRefund*/
+.mallRefund .am-tabs .am-tabs-ink-bar {
+    left: 1.3rem;
+    width: 1.5rem!important;
+}
+.mallRefund .am-list .am-list-body{
+    border-top: 0;
+    background-color: #f5f5f9;
+}
+.mallRefund .am-tabs-bar {
+    margin-bottom: 0.2rem;
+}
+.mallRefund .am-list-body:after {
+    border-bottom: 0;
+}
+.mallRefund .am-list .am-list-body .noLine .am-list-line:after{
+    border-bottom: 0;
+}
+.mallRefund .am-textarea-control textarea,
+.mallRefund .am-textarea-label{
+    font-size: 0.3rem;
+    color: #333;
+}
+
+
+
+/*CardExchangeDetail*/
+.cartText .am-textarea-control textarea,
+.cartText .am-textarea-label{
+    font-size: 0.26rem;
+}
+
+
+.redemeStepper .am-stepper.showNumber{
+    width: 1.7rem;
+    height: 0.5rem;
+    line-height: 0.5rem;
+}
+
+.popup-list .am-list-header{
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+
+
+.shopCartIndex .am-stepper .am-stepper-handler{
+    border-color: #999;
+}
+.shopCartIndex .am-stepper.showNumber .am-stepper-handler-down{
+    border-color: #999;
+}
+.numberSpan{
+    font-family: Microsoft Yahei;
+}
+.am-switch input[type="checkbox"]:checked + .checkbox {
+    background: #9c6e4e!important;
+}
+.UserOrderListView .am-tabs-bar{
+    border-bottom: 0.01rem solid #EAEAEA;
+}
+._hj-f5b2a1eb-9b07_feedback_minimized_label_text{
+    transform: rotate(0deg)!important;
+}
+
+/*UserReceivePackages*/
+
+.logo {
+  height: 32px;
+  background: #ff3b30;
+  border-radius: 6px;
+  margin: 16px;
+}
+.ant-card.ant-card-bordered {
+    border: 0;
+}
+.emoji-dialog .emoji-row .emoji .emojione{
+    width: 22px;
+    height: 22px;
+}
+.emoji-dialog .emoji-row .emoji .emojione{
+    width: 22px;
+    height: 22px;
+}
+.emoji-dialog .emoji-row .emoji {
+    margin: 5px;
+    padding:0!important;
+}
+.emoji-dialog .emoji-row {
+    padding-left: 3px!important;
+}

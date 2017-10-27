@@ -1,0 +1,13 @@
+@value colors: "./ThemeStyle.css";
+@value themeColor from colors;
+
+
+.modal1 :global(.am-modal-content) {
+  background-color: rgba(0,0,0,0);
+}
+.view1{
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    color:#fff;
+}

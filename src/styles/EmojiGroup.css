@@ -1,0 +1,17 @@
+@value colors: "./ThemeStyle.css";
+@value themeColor from colors;
+
+.view1{
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 140px;
+}
+.i1{
+    width: 25px;
+    height: 25px;
+    margin: 13px 5px 0 8px;
+    cursor: pointer;
+    display: block;
+    background-size: 25px auto;
+    background-repeat: no-repeat;
+}

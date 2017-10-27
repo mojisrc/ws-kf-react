@@ -1,0 +1,108 @@
+@value colors: "./ThemeStyle.css";
+@value themeColor from colors;
+
+.view1{
+    margin-bottom: 20px;
+    margin: 0 20px 14px;
+}
+.view2{
+    width: 50px;
+}
+.view3{
+    width: 36px;
+    height: 36px;
+    margin-top: 1px;
+    border-radius: 18px;
+}
+.view4{
+    padding-left: 100px;
+    margin-bottom: 2px;
+    font-size: 12px;
+    line-height: 14px;
+    color: #b2b2b2;
+    align-items: flex-start;
+}
+.view5{
+    flex-direction: row;
+}
+.view6{
+    margin-right: 0;
+    padding: 12px;
+    color: #000;
+    background-color: #fff;
+    border: 1px solid #f0f0f0;
+    position: relative;
+    border-radius: 4px;
+}
+.span1{
+    top: 13px;
+    left: -7px;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-right: 7px solid #f0f0f0;
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    font-size: 0;
+}
+.span2{
+    top: 14px;
+    left: -6px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 6px solid #fff;
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    font-size: 0;
+}
+.p1{
+    font-size: 13px;
+    line-height: 20px;
+    margin:0;
+    text-align: start;
+    text-align: left;
+}
+.view7{
+    margin-bottom: 2px;
+    font-size: 12px;
+    line-height: 14px;
+    color: #b2b2b2;
+    align-items: flex-end;
+}
+.view8{
+    align-items: flex-end;
+
+}
+.view9{
+    position: relative;
+    padding: 8px 12px;
+    font-size: 13px;
+    line-height: 20px;
+    border-radius: 4px;
+    word-wrap: break-word;
+    background-color: themeColor;
+    color: #fff;
+    margin-left: 35px;
+}
+.span3{
+    top: 14px;
+    right: -6px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    border-left: 6px solid #6ed0ce;
+}
+
+.listView1 :global(.am-list-body:after) {
+    border-bottom: 0;
+}
+.listView1 :global(.am-list-body) {
+    border-top: 0;
+}
