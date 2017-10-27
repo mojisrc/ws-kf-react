@@ -1,3 +1,4 @@
+
 html {
     min-width: 1270px;
     min-height: 600px;
@@ -781,4 +782,10 @@ body .am-list-item.am-input-item:after {
 }
 .emoji-dialog .emoji-row {
     padding-left: 3px!important;
+}
+.chatContent .am-list .am-list-body:after, .am-list .am-list-body div:not(:last-child) .am-list-line:after {
+    border-bottom: 0;
+}
+.chatContent .am-list .am-list-body {
+    border-top: 0;
 }

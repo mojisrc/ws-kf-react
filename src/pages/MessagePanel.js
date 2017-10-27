@@ -37,40 +37,64 @@ class MessagePanel extends Component {
         const kfUserInfo = allUserInfoData[kfUserId]
 
         const sidebar = (
-            <List>
+            <View>
                 {
                     sessionListData.map((data, index) => {
                         const itemData = allUserInfoData[data.relation_id]
                         if(!itemData){
                             return(
-                                <List.Item
-                                    key={index}
-                                    thumb="https://zos.alipayobjects.com/rmsportal/eOZidTabPoEbPeU.png"
-                                >
-                                    未知联系人
-                                </List.Item>
+                                <View className = {styles.relationItem}>
+                                    <img
+                                        src='https://zos.alipayobjects.com/rmsportal/eOZidTabPoEbPeU.png'
+                                        alt=''
+                                        className = {styles.relationAvatar}
+                                    />
+                                    <span
+                                        className = {styles.relationNickname}
+                                    >
+                                        未知联系人
+                                    </span>
+                                </View>
+                                // <List.Item
+                                //     key={index}
+                                //     thumb="https://zos.alipayobjects.com/rmsportal/eOZidTabPoEbPeU.png"
+                                // >
+                                //     未知联系人
+                                // </List.Item>
                             )
                         }
                         return (
-                            <List.Item
-                                key={index}
-                                thumb={itemData.avatar}
-                                onClick={() => {
-                                    if (kfUserId !== itemData.id) {
-                                        dispatch(
-                                            selectedSessionListItem({
-                                                id: itemData.id
-                                            })
-                                        );
-                                    }
-                                }}
-                            >
-                                {itemData.nickname}
-                            </List.Item>
+                            <View className = {styles.relationItem}>
+                                <img
+                                    src={itemData.avatar}
+                                    alt=''
+                                    className = {styles.relationAvatar}
+                                />
+                                <span
+                                    className = {styles.relationNickname}
+                                >
+                                    {itemData.nickname}
+                                </span>
+                            </View>
+                            // <List.Item
+                            //     key={index}
+                            //     thumb={itemData.avatar}
+                            //     onClick={() => {
+                            //         if (kfUserId !== itemData.id) {
+                            //             dispatch(
+                            //                 selectedSessionListItem({
+                            //                     id: itemData.id
+                            //                 })
+                            //             );
+                            //         }
+                            //     }}
+                            // >
+                            //     {itemData.nickname}
+                            // </List.Item>
                         )
                     })
                 }
-            </List>
+            </View>
         )
 
 
@@ -99,7 +123,11 @@ class MessagePanel extends Component {
                             style={{ minHeight: document.documentElement.clientHeight - 200 }}
                             enableDragHandle
                             sidebar={sidebar}
-                            sidebarStyle = {{marginTop:60,borderTopLeftRadius:8,backgroundColor:'#fff'}}
+                            sidebarStyle = {{
+                                marginTop:60,
+                                backgroundColor:'#fff',
+                                padding:'20px 30px'
+                            }}
                             open={this.state.open}
                             onOpenChange={this.onOpenChange}
                             touch = {false}
@@ -145,26 +173,28 @@ class MessagePanel extends Component {
         return(
             <View className={styles.view4}>
                 <View className={styles.view5}>
-                    <View
-                        className={styles.view12}
+                    <Button
                         onClick = {this.onOpenChange}
+                        className={styles.openBtn}
                     >
                         最近联系人
-                    </View>
-                    <span className={styles.span1}>{kfUserInfo.nickname}</span>
-                    <View className={styles.view12}>
-                        <View
-                            className={styles.view6}
-                            onClick = {()=>{
-                                this.hide()
-                            }}
-                        >
-                            <Icon type={'down'} style={{marginRight:5}}/>
-                            关闭
-                        </View>
+                    </Button>
+                    <span className={styles.span1}>
+                        {kfUserInfo.nickname}
+                    </span>
+                    <View
+                        className={styles.view6}
+                        onClick = {()=>{
+                            this.hide()
+                        }}
+                    >
+                        <img
+                            src={require('../images/close.png')}
+                            style={{}}
+                        />
                     </View>
                 </View>
-                <View className={styles.view7}>
+                <View className={`${styles.view7} chatContent`}>
                     {
                         dataSource&&(
                             <ListView

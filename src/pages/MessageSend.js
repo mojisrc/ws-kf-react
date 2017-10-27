@@ -6,6 +6,7 @@ import { ThemeStyle } from "../utils/style";
 import ListView from "./ListView";
 import { closeSessionModal } from "../actions/message/sessionList";
 import EmojiGroup from "./EmojiGroup";
+import "../utils/global.css";
 import {addMessageItemData} from "../actions/message/messageSend";
 
 export default class MessageSend extends Component {
@@ -146,7 +147,7 @@ export default class MessageSend extends Component {
             listViewInstance,
         } = this.props
         return (
-            <View className={styles.view8}>
+            <View className={`${styles.view8}`}>
                 <Popover
                     mask
                     visible={this.state.visible}
@@ -189,7 +190,7 @@ export default class MessageSend extends Component {
                 </View>
                 <InputItem
                     placeholder="请输入"
-                    className={styles.inputItem1}
+                    className={`${styles.inputItem1}`}
                     value = {this.state.value}
                     onChange = {(e)=>{
                         this.setState({
