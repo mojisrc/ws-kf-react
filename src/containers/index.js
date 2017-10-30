@@ -360,6 +360,7 @@ class Container extends Component {
         }
 
         socket.onclose = (e)=>{
+            
             const {
                 connectNumber
             } = this.props

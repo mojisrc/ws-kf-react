@@ -55,12 +55,6 @@ class MessagePanel extends Component {
                                         未知联系人
                                     </span>
                                 </View>
-                                // <List.Item
-                                //     key={index}
-                                //     thumb="https://zos.alipayobjects.com/rmsportal/eOZidTabPoEbPeU.png"
-                                // >
-                                //     未知联系人
-                                // </List.Item>
                             )
                         }
                         return (
@@ -76,21 +70,6 @@ class MessagePanel extends Component {
                                     {itemData.nickname}
                                 </span>
                             </View>
-                            // <List.Item
-                            //     key={index}
-                            //     thumb={itemData.avatar}
-                            //     onClick={() => {
-                            //         if (kfUserId !== itemData.id) {
-                            //             dispatch(
-                            //                 selectedSessionListItem({
-                            //                     id: itemData.id
-                            //                 })
-                            //             );
-                            //         }
-                            //     }}
-                            // >
-                            //     {itemData.nickname}
-                            // </List.Item>
                         )
                     })
                 }
