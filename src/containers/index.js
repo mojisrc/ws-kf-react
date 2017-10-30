@@ -8,9 +8,11 @@ import {
 } from "../actions/message"
 import {
     initSessionListData,
+    addSessionListData,
     addAllUserInfoData,
     addMoreAllUserInfoData,
     addMessageListViewData,
+    setUnreadMessageNum,
 } from "../actions/message/sessionList"
 import {
     changeMessageItemData,
@@ -30,42 +32,11 @@ class Container extends Component {
     state = {
         notificationSocket: false,
     };
-    // componentWillReceiveProps(prevProps){
-    //
-    //     console.log(prevProps);
-    //
-    //     const oldIsShowConnectLoading = this.props.isShowConnectLoading
-    //
-    //     const {
-    //         isShowConnectLoading,
-    //         connectNumber,
-    //     } = prevProps
-    //
-    //     if(oldIsShowConnectLoading===false && isShowConnectLoading===true){
-    //         Toast.loading('正在重新连接...',0)
-    //     }
-    //     if(oldIsShowConnectLoading===true && isShowConnectLoading===false){
-    //         Toast.hide()
-    //     }
-    //     if(connectNumber>=3 && isShowConnectLoading===false){
-    //         Toast.hide()
-    //     }
-    //
-    // }
     componentDidMount(){
 
         const {
             onChangeWebSocketConnectState,
             setWebSocket,
-            userLogin,
-            initSessionListData,
-            allUserInfoData,
-            addAllUserInfoData,
-            addMoreAllUserInfoData,
-            addMessageListViewData,
-            allMessageListData,
-            changeMessageItemData,
-            addMessageItemData,
             access_token,
         } = this.props
 
@@ -87,8 +58,8 @@ class Container extends Component {
                 }
             }
             if (ws) {
-                let reconnect = 0; //重连的时间
-                let reconnectMark = false; //是否重连过
+                let reconnect = 0;
+                let reconnectMark = false;
                 this.setState({
                     notificationSocket: true
                 });
@@ -98,9 +69,8 @@ class Container extends Component {
                     reconnectMark = false;
                     ws.receiveMessageTimer = setTimeout(() => {
                         ws.close();
-                    }, 30000); // 30s没收到信息，代表服务器出问题了，关闭连接。如果收到消息了，重置该定时器。
+                    }, 30000);
                     if (ws.readyState === 1) {
-                        // 为1表示连接处于open状态
                         ws.keepAliveTimer = setInterval(() => {
                             ws.keepalive();
                         }, 1000);
@@ -119,188 +89,34 @@ class Container extends Component {
 
                 };
                 ws.onerror = () => {
-
                     onChangeWebSocketConnectState({
                         state : 3
                     })
-
                 };
                 ws.onmessage = (e) => {
-
                     const data = JSON.parse(e.data)
+                    this.onMessage({ws,data})
 
-                    switch (data.type) {
-                        case 'user.self':
-                            userLogin({
-                                userInfoData: data.data.user_info
-                            })
-                            onChangeWebSocketConnectState({
-                                state : 1
-                            })
-                            break;
-                        case 'login':
-                            if(data.code===0){
-                                ws.send(JSON.stringify({
-                                	type: 'user.self',
-                                }))
-                                ws.send(JSON.stringify({
-                                    type: 'message.session.list',
-                                }))
-                            }else {
-                                Toast.info(data.msg)
-                            }
-                            break;
-                        case 'message.session.list':
-                            const {
-                                session_list
-                            } = data.data
-                            initSessionListData({list:session_list})
-                            let newArray = []
-                            session_list.map((item)=>{
-                                if(!allUserInfoData[item.relation_id]){
-                                    newArray.push(item.relation_id)
-                                }
-                            })
-                            if(newArray.length){
-                                ws.send(JSON.stringify({
-                                    type: 'user.infos',
-                                    data: {
-                                        user_ids: newArray,
-                                    }
-                                }))
-                            }
-                            break;
-                        case 'user.info':
-                            if(data.code===0){
-                                const {
-                                    user_info
-                                } = data.data
-                                addAllUserInfoData({
-                                    id: user_info.id,
-                                    data: user_info
-                                })
-                            }else {
-                                Toast.info(data.msg)
-                            }
-                            break;
-                        case 'user.infos':
-                            if(data.code===0){
-                                const {
-                                    user_list
-                                } = data.data
-                                let newData = {}
-                                user_list.map((item)=>{
-                                    newData[item.id] = item
-                                })
-                                addMoreAllUserInfoData({
-                                    data: newData
-                                })
-                            }else {
-                                Toast.info(data.msg)
-                            }
-                            break;
-                        case 'message.list':
-                            if(data.code===0){
-                                const {
-                                    relation_id
-                                } = data.data
-                                addMessageListViewData({
-                                    id: relation_id,
-                                    data: data.data
-                                })
-                            }else {
-                                Toast.info(data.msg)
-                            }
-                            break;
-                        case 'message':
-                            if(data.code===0){
-                                const {
-                                    sign,
-                                    relation_id,
-                                    user_id,
-                                } = data.data
-                                const {
-                                    allMessageListData,
-                                    sessionListData,
-                                    userInfo,
-                                    listViewInstance,
-                                } = this.props
-
-                                const relationId = userInfo.id===relation_id?user_id:relation_id
-
-                                const sessionListIndex = sessionListData.findIndex((e)=>{return e.relation_id===relationId})
-
-                                if(sessionListIndex !== -1){
-
-                                    if(allMessageListData[relationId]){
-                                        const index = allMessageListData[relationId].list.findIndex((item)=>{
-                                            return item.sign===sign
-                                        })
-
-                                        if(index!==-1){
-                                            changeMessageItemData({
-                                                id: relationId,
-                                                data: data.data,
-                                                index,
-                                                allMessageListData
-                                            })
-                                        }else {
-                                            addMessageItemData({
-                                                id: relationId,
-                                                data: data.data,
-                                                allMessageListData
-                                            })
-                                        }
-
-                                        setTimeout(()=>{
-                                            listViewInstance&&listViewInstance()
-                                        },100)
-
-                                    }else {
-                                        ws.send(JSON.stringify({
-                                            type: 'message.list',
-                                            data: {
-                                                type: 'user',
-                                                relation_id:relationId,
-                                                page: 1,
-                                                rows: 10,
-                                            }
-                                        }))
-                                    }
-                                }else {
-                                    Toast.info('另外一个新客服的消息，未开发')
-                                }
-                            }else {
-                                Toast.info(data.msg)
-                            }
-                            break;
-                        default:
-                            return false
-                    }
-
-
-                    // 收到消息，重置定时器
                     clearTimeout(ws.receiveMessageTimer);
                     ws.receiveMessageTimer = setTimeout(() => {
                         ws.close();
-                    }, 30000); // 30s没收到信息，代表服务器出问题了，关闭连接。
+                    }, 30000);
                 };
                 ws.onclose = () => {
-
                     onChangeWebSocketConnectState({
                         state : 2
                     })
 
-                    clearTimeout(ws.receiveMessageTimer);
-                    clearInterval(ws.keepAliveTimer);
+                    clearTimeout(ws.receiveMessageTimer)
+                    clearInterval(ws.keepAliveTimer)
                     if (!reconnectMark) {
-                        // 如果没有重连过，进行重连。
+
                         reconnect = new Date().getTime();
                         reconnectMark = true;
+
                     }
-                    let tempWs = ws; // 保存ws对象
+                    const tempWs = ws;
                     if (new Date().getTime() - reconnect >= 10000) {
-                        // 10秒中重连，连不上就不连了
                         ws.close();
                     } else {
                         ws = new WebSocket(`${chatUrl}`);
@@ -315,75 +131,226 @@ class Container extends Component {
             }
         }
     }
-    // componentDidMount(){
-    //
-    //     // this.initSocket({
-    //     //     first: true
-    //     // })
-    // }
-    initSocket({first}={}){
+    onMessage({ws,data}){
+        const {
+            onChangeWebSocketConnectState,
+            userLogin,
+            initSessionListData,
+            allUserInfoData,
+            addAllUserInfoData,
+            addMoreAllUserInfoData,
+            addMessageListViewData,
+            allMessageListData,
+            changeMessageItemData,
+            addMessageItemData,
+            addSessionListData,
+            setUnreadMessageNum,
+        } = this.props
 
+        switch (data.type) {
+            case 'user.self':
+                userLogin({
+                    userInfoData: data.data.user_info
+                })
+                onChangeWebSocketConnectState({
+                    state : 1
+                })
+                break;
+            case 'login':
+                if(data.code===0){
+                    ws.send(JSON.stringify({
+                        type: 'user.self',
+                    }))
+                    ws.send(JSON.stringify({
+                        type: 'message.session.list',
+                    }))
+                }else {
+                    Toast.info(data.msg)
+                }
+                break;
+            case 'message.session.list':
+                const {
+                    session_list
+                } = data.data
+                initSessionListData({list:session_list})
+                let newArray = []
+                session_list.map((item)=>{
+                    if(!allUserInfoData[item.relation_id]){
+                        newArray.push(item.relation_id)
+                    }
+                })
+                if(newArray.length){
+                    ws.send(JSON.stringify({
+                        type: 'user.infos',
+                        data: {
+                            user_ids: newArray,
+                        }
+                    }))
+                }
+                break;
+            case 'user.info':
+                if(data.code===0){
+                    const {
+                        user_info
+                    } = data.data
+                    addAllUserInfoData({
+                        id: user_info.id,
+                        data: user_info
+                    })
+                }else {
+                    Toast.info(data.msg)
+                }
+                break;
+            case 'user.infos':
+                if(data.code===0){
+                    const {
+                        user_list
+                    } = data.data
+                    let newData = {}
+                    user_list.map((item)=>{
+                        newData[item.id] = item
+                    })
+                    addMoreAllUserInfoData({
+                        data: newData
+                    })
+                }else {
+                    Toast.info(data.msg)
+                }
+                break;
+            case 'message.list':
+                if(data.code===0){
+                    const {
+                        relation_id
+                    } = data.data
+                    const {
+                        listViewInstance,
+                    } = this.props
 
+                    addMessageListViewData({
+                        id: relation_id,
+                        data: data.data
+                    })
 
+                    if(data.data.page_data.current_page===1){
+                        setTimeout(()=>{
+                            listViewInstance&&listViewInstance(true)
+                        },100)
+                    }
 
+                }else {
+                    Toast.info(data.msg)
+                }
+                break;
+            case 'message':
+                if(data.code===0){
+                    const {
+                        sign,
+                        relation_id,
+                        user_id,
+                        create_time,
+                    } = data.data
+                    const {
+                        allMessageListData,
+                        sessionListData,
+                        userInfo,
+                        listViewInstance,
+                        allUnreadMessage,
+                        kfUserId,
+                    } = this.props
 
+                    const relationId = userInfo.id===relation_id?user_id:relation_id
 
-        const socket = new WebSocket('ws://ws.pinggai.cc');
+                    const sessionListIndex = sessionListData.findIndex((e)=>{return e.relation_id===relationId})
 
-        socket.onopen = (event)=>{
+                    //处理未读消息
+                    const isCurrentKf = kfUserId===relationId
 
+                    if(sessionListIndex !== -1){
+                        //设置未读消息
+                        if(!isCurrentKf){
+                            if(allUnreadMessage[relationId]!==undefined){
+                                const thisNum = allUnreadMessage[relationId]
+                                setUnreadMessageNum({
+                                    num: thisNum+1,
+                                    id: relationId,
+                                })
+                            }else {
+                                setUnreadMessageNum({
+                                    num: 1,
+                                    id: relationId,
+                                })
+                            }
+                        }
+                        //添加消息处理
+                        if(allMessageListData[relationId]){
+                            const index = allMessageListData[relationId].list.findIndex((item)=>{
+                                return item.sign===sign
+                            })
 
+                            if(index!==-1){
+                                changeMessageItemData({
+                                    id: relationId,
+                                    data: data.data,
+                                    index,
+                                    allMessageListData
+                                })
+                            }else {
+                                addMessageItemData({
+                                    id: relationId,
+                                    data: data.data,
+                                    allMessageListData
+                                })
+                            }
 
-            this.firstConnectOver({
-                first,
-                state: 1,
-            })
+                            setTimeout(()=>{
+                                listViewInstance&&listViewInstance()
+                            },100)
 
+                        }else {
+                            //消息列表中没有这个客服的聊天记录，查询记录
+                            ws.send(JSON.stringify({
+                                type: 'message.list',
+                                data: {
+                                    type: 'user',
+                                    relation_id:relationId,
+                                    page: 1,
+                                    rows: 10,
+                                }
+                            }))
+                        }
+
+                    }else {
+                        //设置未读消息
+                        if(!isCurrentKf){
+                            setUnreadMessageNum({
+                                num: 1,
+                                id: relationId,
+                            })
+                        }
+                        //新的客服消息，添加客服信息
+                        addSessionListData({
+                            list: sessionListData,
+                            data: {
+                                type: 'user',
+                                relation_id:relationId,
+                                last_time: create_time,
+                            }
+                        })
+                    }
+                }else {
+                    Toast.info(data.msg)
+                }
+                break;
+            default:
+                return false
         }
-
-        socket.onmessage = (e)=>{
-
-
-        }
-
-        socket.onerror = (event)=>{
-            console.log('onerror');
-
-
-            this.firstConnectOver({
-                first,
-                state: 3,
-            })
-
-        }
-
-        socket.onclose = (e)=>{
-
-            const {
-                connectNumber
-            } = this.props
-            if(connectNumber<=3){
-
-                showConnectLoading(true,1+connectNumber)
-
-                // this.initSocket()
-
-            }else {
-
-                showConnectLoading(false,connectNumber)
-
-
-            }
-        }
-
-
     }
     render() {
+
         const {
             connectState,
             showPanelModal,
         } = this.props
-
 
         switch (connectState) {
             case 0:
@@ -429,6 +396,8 @@ const mapStateToProps = ({app,auth,view}) => {
         sessionListData,
         showPanelModal,
         connectNumber,
+        allUnreadMessage,
+        selectedSessionListItemId,
     } = message
     return {
         connectState,
@@ -440,6 +409,8 @@ const mapStateToProps = ({app,auth,view}) => {
         sessionListData,
         showPanelModal,
         connectNumber,
+        allUnreadMessage,
+        kfUserId: selectedSessionListItemId,
     }
 }
 
@@ -455,5 +426,7 @@ export default connect(mapStateToProps,
         addMessageListViewData,
         changeMessageItemData,
         addMessageItemData,
+        addSessionListData,
+        setUnreadMessageNum,
     }
 )(Container)

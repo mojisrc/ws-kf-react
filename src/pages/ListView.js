@@ -39,7 +39,7 @@ export default class MessageListView extends Component {
     }
 
     componentDidMount() {
-
+        this.scrollToBottom(true)
     }
 
     onRefresh = () => {
@@ -50,11 +50,11 @@ export default class MessageListView extends Component {
 
         const {
             current_page,
-            page_rows,
+            total_page,
             next_cursor,
         } = nativeData.page_data
 
-        if (current_page<page_rows) {
+        if (current_page<total_page) {
             const {
                 onRefresh
             } = this.props
@@ -90,6 +90,7 @@ export default class MessageListView extends Component {
             refreshing,
             dispatch,
             nativeData,
+            kfUserInfo,
         } = this.props
 
         const DataSource = new ListView.DataSource({
@@ -102,6 +103,7 @@ export default class MessageListView extends Component {
                 <RowComponent
                     data = {rowData}
                     style = {Number(rowID)===0?{marginTop:20}:undefined}
+                    kfUserInfo = {kfUserInfo}
                 />
             )
         }
@@ -162,7 +164,7 @@ export default class MessageListView extends Component {
 
 
 
-const LeftView = ({data,style})=>(
+const LeftView = ({data,style,kfUserInfo})=>(
     <View className={styles.view1} style={style}>
         <View className={styles.view4}>
             {DateFormat(data.create_time,'MM/dd hh:mm')}
@@ -170,7 +172,7 @@ const LeftView = ({data,style})=>(
         <View className={styles.view5}>
             <View className={styles.view2}>
                 <img
-                    src={data.avatar&&data.avatar.length?data.avatar:'https://s3.cn-north-1.amazonaws.com.cn/pics.meiqia.bucket/86d1d383c0f6cf72'}
+                    src={kfUserInfo.avatar&&kfUserInfo.avatar.length?kfUserInfo.avatar:require('../images/kf-avatar.png')}
                     className={styles.view3}
                 />
             </View>

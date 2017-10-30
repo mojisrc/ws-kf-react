@@ -14,6 +14,19 @@ export const initSessionListData = ({list})=>{
 }
 
 
+export const addSessionListData = ({data,list})=>{
+    return dispatch => {
+        const newArray = [data,...list]
+        dispatch({
+            type : types.message.INIT_SESSION_LIST_DATA,
+            list:newArray,
+        })
+    }
+}
+
+
+
+
 export const addAllUserInfoData = ({data,id})=>{
     return dispatch => {
         let newData = {}
@@ -66,7 +79,7 @@ export const selectedSessionListItem = ({id})=>{
                 }))
             }
 
-            if(!allMessageListData[id]){
+            // if(!allMessageListData[id]){
                 socketInstance.send(JSON.stringify({
                     type: 'message.list',
                     data: {
@@ -76,7 +89,7 @@ export const selectedSessionListItem = ({id})=>{
                         rows: 10,
                     }
                 }))
-            }
+            // }
 
         }else {
             switch (connectState) {
@@ -120,7 +133,13 @@ export const addMessageListViewData = ({data,id})=>{
         if(allMessageListData[id]){
             const oldData = allMessageListData[id].list
             let newData = {}
-            data.list = [...oldData,...data.list]
+
+            if(data.page_data.current_page===1){
+
+            }else {
+                data.list = [...oldData,...data.list]
+            }
+
             newData[id] = data
             dispatch({
                 type : types.message.ADD_MESSAGE_LIST_VIEW_DATA,
@@ -137,5 +156,17 @@ export const addMessageListViewData = ({data,id})=>{
             })
         }
 
+    }
+}
+
+
+export const setUnreadMessageNum = ({num,id})=>{
+    return dispatch => {
+        let newData = {}
+        newData[id] = num
+        dispatch({
+            type: types.message.SET_UNREAD_MESSAGE_NUM,
+            data: newData,
+        })
     }
 }

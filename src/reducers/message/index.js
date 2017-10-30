@@ -15,6 +15,7 @@ const initialState = {
     refreshing: false,
     listViewInstance: null,
     allMessageDataStore: [],
+    allUnreadMessage:{},
 }
 
 
@@ -66,6 +67,10 @@ export default (state = initialState, action)=>{
         case types.message.SET_LISTVIEW_INSTANCE:
             return Object.assign({}, state, {
                 listViewInstance: action.listViewInstance,
+            })
+        case types.message.SET_UNREAD_MESSAGE_NUM:
+            return Object.assign({}, state, {
+                allUnreadMessage: Object.assign({},state.allUnreadMessage,action.data),
             })
         default:
             return state;

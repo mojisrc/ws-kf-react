@@ -10,3 +10,4 @@ export const ADD_MESSAGE_ITEM_DATA = 'ADD_MESSAGE_ITEM_DATA'; // 添加会话消
 export const CLOSE_SESSION_MODAL = 'CLOSE_SESSION_MODAL'; // 关闭消息对话框
 export const REFRESHING_CHANGE = 'REFRESHING_CHANGE'; // 刷新指示器变化
 export const SET_LISTVIEW_INSTANCE = 'SET_LISTVIEW_INSTANCE'; // 设置listview实例
+export const SET_UNREAD_MESSAGE_NUM = 'SET_UNREAD_MESSAGE_NUM'; // 设置未读消息数量

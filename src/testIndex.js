@@ -33,7 +33,7 @@ class App extends Component {
                     type="primary"
                     style={{ margin: "0 1rem" }}
                     onClick={() => {
-                        WsKfShowPanel({id:2})
+                        WsKfShowPanel({id:894})
                     }}
                 >
                     联系客服

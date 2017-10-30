@@ -5,7 +5,8 @@ import {
     Icon,
     InputItem,
     Drawer,
-    List
+    List,
+    Badge,
 } from "antd-mobile";
 import { View } from "react-web-dom";
 import styles from "../styles/App.css";
@@ -31,6 +32,7 @@ class MessagePanel extends Component {
             allUserInfoData,
             kfUserId,
             sessionListData,
+            allUnreadMessage,
         } = this.props
 
 
@@ -62,14 +64,24 @@ class MessagePanel extends Component {
                         }
                         return (
                             <View
-                                className = {styles.relationItem}
+                                className = {`${styles.relationItem} ${kfUserId===data.relation_id&&styles.relationItemActive}`}
                                 key = {index}
+                                onClick = {()=>{
+                                    dispatch(selectedSessionListItem({
+                                        id: data.relation_id
+                                    }))
+                                    this.onOpenChange()
+                                }}
                             >
-                                <img
-                                    src={itemData.avatar}
-                                    alt=''
-                                    className = {styles.relationAvatar}
-                                />
+                                <Badge
+                                    text = {allUnreadMessage[data.relation_id]||0}
+                                >
+                                    <img
+                                        src={itemData.avatar&&itemData.avatar.length?itemData.avatar:require('../images/kf-avatar.png')}
+                                        alt=''
+                                        className = {styles.relationAvatar}
+                                    />
+                                </Badge>
                                 <span
                                     className = {styles.relationNickname}
                                 >
@@ -111,7 +123,6 @@ class MessagePanel extends Component {
                             sidebarStyle = {{
                                 marginTop:60,
                                 backgroundColor:'#fff',
-                                padding:'20px 30px'
                             }}
                             open={this.state.open}
                             onOpenChange={this.onOpenChange}
@@ -151,19 +162,30 @@ class MessagePanel extends Component {
             socketInstance,
             refreshing,
             listViewInstance,
+            allUnreadMessage,
         } = this.props
         const kfUserInfo = allUserInfoData[kfUserId]
         const dataSource = allMessageListData[kfUserId]
 
+        let initUnreadNum = 0;
+        for (const unreadNum in allUnreadMessage) {
+            initUnreadNum += allUnreadMessage[unreadNum]
+        }
+
         return(
             <View className={styles.view4}>
                 <View className={styles.view5}>
-                    <Button
-                        onClick = {this.onOpenChange}
-                        className={styles.openBtn}
+                    <Badge
+                        text = {initUnreadNum}
+                        style = {{right:'-0.6rem',zIndex:0}}
                     >
-                        最近联系人
-                    </Button>
+                        <Button
+                            onClick = {this.onOpenChange}
+                            className={styles.openBtn}
+                        >
+                            最近联系人
+                        </Button>
+                    </Badge>
                     <span className={styles.span1} style={{left:windowWidth/2-25}}>
                         {kfUserInfo.nickname}
                     </span>
@@ -191,6 +213,7 @@ class MessagePanel extends Component {
                                 userInfo = {userInfo}
                                 refreshing = {refreshing}
                                 dispatch = {dispatch}
+                                kfUserInfo = {kfUserInfo}
                             />
                         )
                     }
@@ -250,6 +273,7 @@ const mapStateToProps = ({view,app}) => {
         refreshing,
         listViewInstance,
         sessionListData,
+        allUnreadMessage,
     } = message
     const {
         userInfo
@@ -264,6 +288,7 @@ const mapStateToProps = ({view,app}) => {
         refreshing,
         listViewInstance,
         sessionListData,
+        allUnreadMessage,
     }
 }
 
