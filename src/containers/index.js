@@ -70,24 +70,22 @@ class Container extends Component {
         } = this.props
 
         if (!this.state.notificationSocket) {
-            // 用户登录了并且没有连接过websocket
+
             let ws = new WebSocket(`${chatUrl}`);
-            ws.last_health_time = -1; // 上一次心跳时间
-            ws.keepalive = function() {
-                let time = new Date().getTime();
+            ws.last_health_time = -1;
+            ws.keepalive = ()=>{
+                const time = new Date().getTime()
                 if (ws.last_health_time !== -1 && time - ws.last_health_time > 20000) {
-                    // 不是刚开始连接并且20s
                     ws.close();
                 } else {
-                    // 如果断网了，ws.send会无法发送消息出去。ws.bufferedAmount不会为0。
                     if (ws.bufferedAmount === 0 && ws.readyState === 1) {
                         ws.send(JSON.stringify({
                             type: 'pong'
-                        }));
+                        }))
                         ws.last_health_time = time;
                     }
                 }
-            };
+            }
             if (ws) {
                 let reconnect = 0; //重连的时间
                 let reconnectMark = false; //是否重连过
@@ -360,7 +358,7 @@ class Container extends Component {
         }
 
         socket.onclose = (e)=>{
-            
+
             const {
                 connectNumber
             } = this.props

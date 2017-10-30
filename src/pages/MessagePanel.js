@@ -43,7 +43,10 @@ class MessagePanel extends Component {
                         const itemData = allUserInfoData[data.relation_id]
                         if(!itemData){
                             return(
-                                <View className = {styles.relationItem}>
+                                <View
+                                    className = {styles.relationItem}
+                                    key = {index}
+                                >
                                     <img
                                         src='https://zos.alipayobjects.com/rmsportal/eOZidTabPoEbPeU.png'
                                         alt=''
@@ -58,7 +61,10 @@ class MessagePanel extends Component {
                             )
                         }
                         return (
-                            <View className = {styles.relationItem}>
+                            <View
+                                className = {styles.relationItem}
+                                key = {index}
+                            >
                                 <img
                                     src={itemData.avatar}
                                     alt=''
