@@ -33,6 +33,7 @@
     flex:1;
 }
 .view5{
+    position: relative;
     height: 52px;
     background-color: themeColor;
     padding: 0 12px;
@@ -43,10 +44,10 @@
     align-items: center;
 }
 .span1{
+    position: absolute;
     color: #333;
     font-size: 18px;
     font-weight: 500;
-    margin-right: 30px;
 }
 .view6{
     flex-direction: row;

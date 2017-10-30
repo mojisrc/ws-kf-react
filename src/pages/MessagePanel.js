@@ -9,7 +9,7 @@ import {
 } from "antd-mobile";
 import { View } from "react-web-dom";
 import styles from "../styles/App.css";
-import { ThemeStyle } from "../utils/style";
+import { ThemeStyle, windowWidth } from "../utils/style";
 import ListView from './ListView'
 import MessageSend from './MessageSend'
 import {closeSessionModal} from '../actions/message/sessionList'
@@ -179,7 +179,7 @@ class MessagePanel extends Component {
                     >
                         最近联系人
                     </Button>
-                    <span className={styles.span1}>
+                    <span className={styles.span1} style={{left:windowWidth/2-25}}>
                         {kfUserInfo.nickname}
                     </span>
                     <View
