@@ -43,7 +43,10 @@ class MessagePanel extends Component {
                         const itemData = allUserInfoData[data.relation_id]
                         if(!itemData){
                             return(
-                                <View className = {styles.relationItem}>
+                                <View
+                                    className = {styles.relationItem}
+                                    key = {index}
+                                >
                                     <img
                                         src='https://zos.alipayobjects.com/rmsportal/eOZidTabPoEbPeU.png'
                                         alt=''
@@ -55,16 +58,13 @@ class MessagePanel extends Component {
                                         未知联系人
                                     </span>
                                 </View>
-                                // <List.Item
-                                //     key={index}
-                                //     thumb="https://zos.alipayobjects.com/rmsportal/eOZidTabPoEbPeU.png"
-                                // >
-                                //     未知联系人
-                                // </List.Item>
                             )
                         }
                         return (
-                            <View className = {styles.relationItem}>
+                            <View
+                                className = {styles.relationItem}
+                                key = {index}
+                            >
                                 <img
                                     src={itemData.avatar}
                                     alt=''
@@ -76,21 +76,6 @@ class MessagePanel extends Component {
                                     {itemData.nickname}
                                 </span>
                             </View>
-                            // <List.Item
-                            //     key={index}
-                            //     thumb={itemData.avatar}
-                            //     onClick={() => {
-                            //         if (kfUserId !== itemData.id) {
-                            //             dispatch(
-                            //                 selectedSessionListItem({
-                            //                     id: itemData.id
-                            //                 })
-                            //             );
-                            //         }
-                            //     }}
-                            // >
-                            //     {itemData.nickname}
-                            // </List.Item>
                         )
                     })
                 }
