@@ -43,12 +43,6 @@
     justify-content: space-between;
     align-items: center;
 }
-.span1{
-    /*position: absolute;
-    color: #333;
-    font-size: 18px;
-    font-weight: 500;*/
-}
 .view6{
     flex-direction: row;
     align-items: center;

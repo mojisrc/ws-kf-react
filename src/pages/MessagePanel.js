@@ -189,7 +189,7 @@ class MessagePanel extends Component {
                         </Badge>
                     </View>
                     <View className={styles.navTitle}>
-                        <span className={styles.span1} style={{left:windowWidth/2-25}}>
+                        <span>
                             {kfUserInfo.nickname}
                         </span>
                     </View>
@@ -201,7 +201,6 @@ class MessagePanel extends Component {
                     >
                         <img
                             src={require('../images/close.png')}
-                            style={{}}
                         />
                     </View>
                 </View>
