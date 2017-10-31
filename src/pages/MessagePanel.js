@@ -174,23 +174,27 @@ class MessagePanel extends Component {
 
         return(
             <View className={styles.view4}>
-                <View className={styles.view5}>
-                    <Badge
-                        text = {initUnreadNum}
-                        style = {{right:'-0.6rem',zIndex:0}}
-                    >
-                        <Button
-                            onClick = {this.onOpenChange}
-                            className={styles.openBtn}
+                <View className={styles.nav}>
+                    <View className={styles.navLeft}>
+                        <Badge
+                            text = {initUnreadNum}
+                            style = {{right:'-0.6rem',zIndex:0}}
                         >
-                            最近联系人
-                        </Button>
-                    </Badge>
-                    <span className={styles.span1} style={{left:windowWidth/2-25}}>
-                        {kfUserInfo.nickname}
-                    </span>
+                            <Button
+                                onClick = {this.onOpenChange}
+                                className={styles.openBtn}
+                            >
+                                最近联系人
+                            </Button>
+                        </Badge>
+                    </View>
+                    <View className={styles.navTitle}>
+                        <span className={styles.span1} style={{left:windowWidth/2-25}}>
+                            {kfUserInfo.nickname}
+                        </span>
+                    </View>
                     <View
-                        className={styles.view6}
+                        className={styles.navRight}
                         onClick = {()=>{
                             this.hide()
                         }}
