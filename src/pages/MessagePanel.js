@@ -8,15 +8,15 @@ import {
     List,
     Badge,
 } from "antd-mobile";
-import { View } from "react-web-dom";
+import { View,ScrollView } from "react-web-dom";
 import styles from "../styles/App.css";
 import { ThemeStyle, windowWidth } from "../utils/style";
 import ListView from './ListView'
 import MessageSend from './MessageSend'
-import {closeSessionModal} from '../actions/message/sessionList'
+import {closeSessionModal,selectedSessionListItem} from '../actions/message/sessionList'
 import { connect } from "react-redux";
 import {refreshingChange} from '../actions/message/listView'
-import {selectedSessionListItem} from "../actions/message/sessionList";
+import {setSendMessageApi} from "../actions/message/messageSend";
 
 class MessagePanel extends Component {
     state = {
@@ -39,7 +39,7 @@ class MessagePanel extends Component {
         const kfUserInfo = allUserInfoData[kfUserId]
 
         const sidebar = (
-            <View>
+            <ScrollView block={true}>
                 {
                     sessionListData.map((data, index) => {
                         const itemData = allUserInfoData[data.relation_id]
@@ -91,7 +91,7 @@ class MessagePanel extends Component {
                         )
                     })
                 }
-            </View>
+            </ScrollView>
         )
 
 
@@ -225,6 +225,11 @@ class MessagePanel extends Component {
                     selectedId = {kfUserId}
                     allMessageListData = {allMessageListData}
                     listViewInstance = {listViewInstance}
+                    ref = {(e)=>{
+                        if(e){
+                            dispatch(setSendMessageApi(e.sendMessage))
+                        }
+                    }}
                 />
             </View>
         )

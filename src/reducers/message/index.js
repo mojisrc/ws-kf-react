@@ -16,6 +16,7 @@ const initialState = {
     listViewInstance: null,
     allMessageDataStore: [],
     allUnreadMessage:{},
+    sendMessageApiFunc: null,
 }
 
 
@@ -71,6 +72,10 @@ export default (state = initialState, action)=>{
         case types.message.SET_UNREAD_MESSAGE_NUM:
             return Object.assign({}, state, {
                 allUnreadMessage: Object.assign({},state.allUnreadMessage,action.data),
+            })
+        case types.message.SET_SEND_MESSAGE_API:
+            return Object.assign({}, state, {
+                sendMessageApiFunc: action.func,
             })
         default:
             return state;

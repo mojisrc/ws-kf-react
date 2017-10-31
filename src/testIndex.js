@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import { Button } from "antd-mobile";
-import { WsKfInit,WsKfShowPanel } from "./index";
+import { WsKfInit,WsKfShowPanel,SendMessage } from "./index";
 
 
 class App extends Component {
     componentDidMount(){
         WsKfInit({
-            access_token: 'f914f40705ced1e4495f1764d9f571aba1d7fe69',
+            access_token: '4578c4c14328771b3c347af42e5ad5c5871523df',
             callback: (e)=>{
                 console.log(e);
             }
@@ -34,6 +34,13 @@ class App extends Component {
                     style={{ margin: "0 1rem" }}
                     onClick={() => {
                         WsKfShowPanel({id:894})
+                        // setTimeout(()=>{
+                        //     SendMessage({
+                        //         content_type:'text',
+                        //         text_content:'cccccc',
+                        //         kfId: 894
+                        //     })
+                        // },1500)
                     }}
                 >
                     联系客服

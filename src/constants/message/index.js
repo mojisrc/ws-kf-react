@@ -11,3 +11,4 @@ export const CLOSE_SESSION_MODAL = 'CLOSE_SESSION_MODAL'; // 关闭消息对话�
 export const REFRESHING_CHANGE = 'REFRESHING_CHANGE'; // 刷新指示器变化
 export const SET_LISTVIEW_INSTANCE = 'SET_LISTVIEW_INSTANCE'; // 设置listview实例
 export const SET_UNREAD_MESSAGE_NUM = 'SET_UNREAD_MESSAGE_NUM'; // 设置未读消息数量
+export const SET_SEND_MESSAGE_API = 'SET_SEND_MESSAGE_API'; // 设置发送消息api

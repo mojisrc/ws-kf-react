@@ -58,8 +58,27 @@ const newItemDataFunc = (data)=>{
         case 'image':
             newData.content['image_url'] = data.image_url
             return newData
+        case 'template':
+            newData.content['template_title'] = data.template_title
+            newData.content['template_desc'] = data.template_desc
+            newData.content['template_link'] = data.template_link
+            newData.content['template_img'] = data.template_img
+            newData.content['template_extra_name'] = data.template_extra_name
+            newData.content['template_extra_content'] = data.template_extra_content
+            return newData
         default:
             return newData
     }
 
+}
+
+
+
+export const setSendMessageApi = (func)=>{
+    return dispatch => {
+        dispatch({
+            type : types.message.SET_SEND_MESSAGE_API,
+            func,
+        })
+    }
 }

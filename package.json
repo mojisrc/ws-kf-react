@@ -1,6 +1,6 @@
 {
   "name": "ws-kf-react",
-  "version": "0.2.2",
+  "version": "0.2.4",
   "private": false,
   "dependencies": {
     "antd-mobile": "^1.7.1",

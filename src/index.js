@@ -27,4 +27,14 @@ const WsKfShowPanel = ({ id }) => {
     store.dispatch(selectedSessionListItem({ id }));
 };
 
-export { WsKfInit, WsKfShowPanel };
+const SendMessage = (params) => {
+    const {
+        view
+    } = store.getState()
+    const {
+        message
+    } = view
+    message.sendMessageApiFunc(params)
+};
+
+export { WsKfInit, WsKfShowPanel, SendMessage };

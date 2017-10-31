@@ -4,3 +4,4 @@ node_modules
 public
 scripts
 src
+build/stats.html

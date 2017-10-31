@@ -115,7 +115,6 @@ export default class MessageListView extends Component {
                         this.listView = e
                         dispatch(setListViewInstance(this.scrollToBottom))
                     }
-
                 }}
                 dataSource={DataSource.cloneWithRows(data)}
                 renderRow={row}
@@ -227,6 +226,21 @@ const ContentView = ({data})=>{
                         />
                     </p>
                 )
+            case 'template':
+                return(
+                    <View className={styles.view10}>
+                        <p className={styles.p2}>{data.content.template_title}</p>
+                        <View className={styles.view11}>
+                            <p className={styles.p3}>
+                                {data.content.template_desc}
+                            </p>
+                            <img
+                                className = {styles.img1}
+                                src = {data.content.template_img}
+                            />
+                        </View>
+                    </View>
+                )
             default:
                 console.log(data);
                 return (
@@ -239,7 +253,7 @@ const ContentView = ({data})=>{
         console.log(data);
         return (
             <p className={styles.p1}>
-                未知数据类型
+                数据类型异常
             </p>
         )
     }
