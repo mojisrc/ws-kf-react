@@ -52,10 +52,16 @@ export const addMoreAllUserInfoData = ({data})=>{
 
 export const selectedSessionListItem = ({id})=>{
     return dispatch => {
+
+        let newObject = {}
+        newObject[id] = 0
+
         dispatch({
             type : types.message.SELECTED_SESSION_LIST_ITEM,
             id,
+            unreadMessageData: newObject,
         })
+
         const {
             view
         } = store.getState()

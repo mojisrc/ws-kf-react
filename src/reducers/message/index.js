@@ -26,6 +26,7 @@ export default (state = initialState, action)=>{
             return Object.assign({}, state, {
                 selectedSessionListItemId: action.id,
                 showPanelModal: true,
+                allUnreadMessage: Object.assign({},state.allUnreadMessage,action.unreadMessageData),
             })
         case types.message.CLOSE_SESSION_MODAL:
             return Object.assign({}, state, {

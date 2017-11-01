@@ -267,7 +267,7 @@ const emojify = (str, options = {}) => {
                 <EmojiComponent
                     index = {emojiIndex}
                     key = {index}
-                    style = {{float:'left',margin:0}}
+                    style = {{margin:0}}
                 />
             )
         }

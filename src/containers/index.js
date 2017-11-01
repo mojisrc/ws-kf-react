@@ -29,9 +29,6 @@ import { Toast } from 'antd-mobile';
 const chatUrl = 'ws://ws.pinggai.cc'
 
 class Container extends Component {
-    state = {
-        notificationSocket: false,
-    };
     componentDidMount(){
 
         const {
@@ -40,93 +37,88 @@ class Container extends Component {
             access_token,
         } = this.props
 
-        if (!this.state.notificationSocket) {
-
-            let ws = new WebSocket(`${chatUrl}`);
-            ws.last_health_time = -1;
-            ws.keepalive = ()=>{
-                const time = new Date().getTime()
-                if (ws.last_health_time !== -1 && time - ws.last_health_time > 20000) {
-                    ws.close();
-                } else {
-                    if (ws.bufferedAmount === 0 && ws.readyState === 1) {
-                        ws.send(JSON.stringify({
-                            type: 'pong'
-                        }))
-                        ws.last_health_time = time;
-                    }
+        let ws = new WebSocket(`${chatUrl}`);
+        ws.last_health_time = -1;
+        ws.keepalive = ()=>{
+            const time = new Date().getTime()
+            if (ws.last_health_time !== -1 && time - ws.last_health_time > 20000) {
+                ws.close();
+            } else {
+                if (ws.bufferedAmount === 0 && ws.readyState === 1) {
+                    ws.send(JSON.stringify({
+                        type: 'pong'
+                    }))
+                    ws.last_health_time = time;
                 }
             }
-            if (ws) {
-                let reconnect = 0;
-                let reconnectMark = false;
-                this.setState({
-                    notificationSocket: true
-                });
-                ws.onopen = () => {
+        }
+        if (ws) {
+            let reconnect = 0;
+            let reconnectMark = false;
 
-                    reconnect = 0;
-                    reconnectMark = false;
-                    ws.receiveMessageTimer = setTimeout(() => {
-                        ws.close();
-                    }, 30000);
-                    if (ws.readyState === 1) {
-                        ws.keepAliveTimer = setInterval(() => {
-                            ws.keepalive();
-                        }, 1000);
+            ws.onopen = () => {
+
+                reconnect = 0;
+                reconnectMark = false;
+                ws.receiveMessageTimer = setTimeout(() => {
+                    ws.close();
+                }, 30000);
+                if (ws.readyState === 1) {
+                    ws.keepAliveTimer = setInterval(() => {
+                        ws.keepalive();
+                    }, 1000);
+                }
+
+                setWebSocket({
+                    socket:ws
+                })
+
+                ws.send(JSON.stringify({
+                    type: 'login',
+                    data: {
+                        access_token,
                     }
+                }))
 
-                    setWebSocket({
-                        socket:ws
-                    })
+            };
+            ws.onerror = () => {
+                onChangeWebSocketConnectState({
+                    state : 3
+                })
+            };
+            ws.onmessage = (e) => {
+                const data = JSON.parse(e.data)
+                this.onMessage({ws,data})
 
-                    ws.send(JSON.stringify({
-                        type: 'login',
-                        data: {
-                            access_token,
-                        }
-                    }))
+                clearTimeout(ws.receiveMessageTimer);
+                ws.receiveMessageTimer = setTimeout(() => {
+                    ws.close();
+                }, 30000);
+            };
+            ws.onclose = () => {
+                onChangeWebSocketConnectState({
+                    state : 2
+                })
 
-                };
-                ws.onerror = () => {
-                    onChangeWebSocketConnectState({
-                        state : 3
-                    })
-                };
-                ws.onmessage = (e) => {
-                    const data = JSON.parse(e.data)
-                    this.onMessage({ws,data})
+                clearTimeout(ws.receiveMessageTimer)
+                clearInterval(ws.keepAliveTimer)
+                if (!reconnectMark) {
 
-                    clearTimeout(ws.receiveMessageTimer);
-                    ws.receiveMessageTimer = setTimeout(() => {
-                        ws.close();
-                    }, 30000);
-                };
-                ws.onclose = () => {
-                    onChangeWebSocketConnectState({
-                        state : 2
-                    })
+                    reconnect = new Date().getTime();
+                    reconnectMark = true;
 
-                    clearTimeout(ws.receiveMessageTimer)
-                    clearInterval(ws.keepAliveTimer)
-                    if (!reconnectMark) {
-
-                        reconnect = new Date().getTime();
-                        reconnectMark = true;
-
-                    }
-                    const tempWs = ws;
-                    if (new Date().getTime() - reconnect >= 10000) {
-                        ws.close();
-                    } else {
-                        ws = new WebSocket(`${chatUrl}`);
-                        ws.onopen = tempWs.onopen;
-                        ws.onmessage = tempWs.onmessage;
-                        ws.onerror = tempWs.onerror;
-                        ws.onclose = tempWs.onclose;
-                        ws.keepalive = tempWs.keepalive;
-                        ws.last_health_time = -1;
-                    }
+                }
+                const tempWs = ws;
+                if (new Date().getTime() - reconnect >= 10000) {
+                    ws.close();
+                } else {
+                    ws = new WebSocket(`${chatUrl}`);
+                    ws.onopen = tempWs.onopen;
+                    ws.onmessage = tempWs.onmessage;
+                    ws.onerror = tempWs.onerror;
+                    ws.onclose = tempWs.onclose;
+                    ws.keepalive = tempWs.keepalive;
+                    ws.last_health_time = -1;
                 }
             }
         }
@@ -336,6 +328,14 @@ class Container extends Component {
                                 last_time: create_time,
                             }
                         })
+
+                        ws.send(JSON.stringify({
+                            type: 'user.info',
+                            data: {
+                                user_id: relationId,
+                            }
+                        }))
+
                     }
                 }else {
                     Toast.info(data.msg)

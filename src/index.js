@@ -5,6 +5,7 @@ import App from "./containers/index";
 import { Provider } from "react-redux";
 import store from "./store/ConfigureStore";
 import { selectedSessionListItem } from "./actions/message/sessionList";
+import { getSendMessageDataSource } from "./pages/MessageSend";
 
 const WsKfInit = ({ access_token, callback } = {}) => {
     var box = document.getElementsByTagName("body")[0];
@@ -34,7 +35,42 @@ const SendMessage = (params) => {
     const {
         message
     } = view
-    message.sendMessageApiFunc(params)
+    const {
+        socketInstance
+    } = message
+
+    if(message.sendMessageApiFunc){
+        message.sendMessageApiFunc(params)
+    }else {
+        const {
+            content_type,
+            text_content,
+            image_url,
+            templateData
+        } = params
+
+        const SendMessageDataSource = getSendMessageDataSource({
+            selectedId: params.kfId,
+            content_type,
+            text_content,
+            image_url,
+            templateData,
+        })
+
+        if(SendMessageDataSource===false){
+            return false
+        }
+
+        const {
+            newParams,
+        } = SendMessageDataSource
+
+        socketInstance.send(JSON.stringify(newParams))
+
+    }
+
+
+
 };
 
 export { WsKfInit, WsKfShowPanel, SendMessage };

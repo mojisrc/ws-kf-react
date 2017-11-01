@@ -8,6 +8,7 @@ import { closeSessionModal } from "../actions/message/sessionList";
 import EmojiGroup from "./EmojiGroup";
 import "../utils/global.css";
 import {addMessageItemData} from "../actions/message/messageSend";
+import store from "../store";
 
 export default class MessageSend extends Component {
     constructor(props){
@@ -100,90 +101,26 @@ export default class MessageSend extends Component {
             listViewInstance,
         } = this.props
 
-        const timestamp = Date.parse(new Date())/1000
-        const sign = `${timestamp}${generateMixed(18)}`
+        const SendMessageDataSource = getSendMessageDataSource({
+            selectedId,
+            content_type,
+            text_content,
+            image_url,
+            removeSign,
+            templateData,
+        })
 
-        let newParams = {
-            type: 'message',
-            data: {
-                type: 'user',
-                sign,
-                relation_id: selectedId,
-                content_type,
-            }
+        if(SendMessageDataSource===false){
+            return false
         }
-
-        let newData = {
-            id: selectedId,
-            allMessageListData,
-            data: {
-                create_time: timestamp,
-                content_type,
-                sign,
-                relation_id: selectedId,
-                user_id: userInfo.id,
-            }
-        }
-
-        switch (content_type) {
-            case 'text':
-                newParams.data['text_content'] = text_content
-                newData.data['text_content'] = text_content
-                break;
-            case 'image':
-                newParams.data['image_url'] = image_url
-                newData.data['image_url'] = image_url
-                if(removeSign){
-                    newData.removeSign=removeSign
-                }
-                break;
-            case 'template':
-                switch (templateData.template_extra_name) {
-                    case 'goods':
-                        //send参数
-                        newParams.data['template_title'] = templateData.template_title
-                        newParams.data['template_desc'] = templateData.template_desc
-                        newParams.data['template_link'] = templateData.template_link
-                        newParams.data['template_img'] = templateData.template_img
-                        newParams.data['template_extra_name'] = templateData.template_extra_name
-                        newParams.data['template_extra_content'] = templateData.template_extra_content
-                        //模拟数据
-                        newData.data['template_title'] = templateData.template_title
-                        newData.data['template_desc'] = templateData.template_desc
-                        newData.data['template_link'] = templateData.template_link
-                        newData.data['template_img'] = templateData.template_img
-                        newData.data['template_extra_name'] = templateData.template_extra_name
-                        newData.data['template_extra_content'] = templateData.template_extra_content
-                        break;
-                    default:
-                        Toast.info('未知模板数据类型',1)
-                        return false
-                }
-                break;
-            default:
-                Toast.info('未知发送类型',1)
-                return false
-        }
+        const {
+            newParams,
+            newData,
+            sign,
+        } = SendMessageDataSource
 
         if(isSend!==false){
             socketInstance.send(JSON.stringify(newParams))
-            // socketInstance.send(JSON.stringify({
-            //     type: 'message',
-            //     data: {
-            //         type: 'user',
-            //         sign,
-            //         relation_id: selectedId,
-            //         content_type: 'template',
-            //         template_title: '晋皇羊肥小米：妈妈米黄小米五谷杂粮生态米',
-            //         template_desc: '套餐包括：400g五年/三年/两年休耕基地米各一盒',
-            //         template_link: 'http://m.jhyfxm.com/mall/goodsDetail/992',
-            //         template_img: 'http://shengxing.oss-cn-beijing.aliyuncs.com/app/20170911/1505127015291203.png',
-            //         template_extra_name: 'goods',
-            //         template_extra_content: {
-            //             relation_id: 992,
-            //         },
-            //     }
-            // }))
         }
 
         if(isAdd!==false){
@@ -294,4 +231,98 @@ function generateMixed(n) {
         res += jschars[id];
     }
     return res;
+}
+
+
+
+export const getSendMessageDataSource = ({selectedId,content_type,user_id,text_content,image_url,removeSign,templateData})=>{
+
+    const timestamp = Date.parse(new Date())/1000
+    const sign = `${timestamp}${generateMixed(18)}`
+
+
+    const {
+        view,
+        app,
+    } = store.getState()
+    const {
+        message
+    } = view
+    const {
+        user
+    } = app
+    const {
+        userInfo
+    } = user
+    const {
+        allMessageListData
+    } = message
+
+    let newParams = {
+        type: 'message',
+        data: {
+            type: 'user',
+            sign,
+            relation_id: selectedId,
+            content_type,
+        }
+    }
+
+    let newData = {
+        id: selectedId,
+        allMessageListData,
+        data: {
+            create_time: timestamp,
+            content_type,
+            sign,
+            relation_id: selectedId,
+            user_id: userInfo.id,
+        }
+    }
+
+    switch (content_type) {
+        case 'text':
+            newParams.data['text_content'] = text_content
+            newData.data['text_content'] = text_content
+            break;
+        case 'image':
+            newParams.data['image_url'] = image_url
+            newData.data['image_url'] = image_url
+            if(removeSign){
+                newData.removeSign=removeSign
+            }
+            break;
+        case 'template':
+            switch (templateData.template_extra_name) {
+                case 'goods':
+                    //send参数
+                    newParams.data['template_title'] = templateData.template_title
+                    newParams.data['template_desc'] = templateData.template_desc
+                    newParams.data['template_link'] = templateData.template_link
+                    newParams.data['template_img'] = templateData.template_img
+                    newParams.data['template_extra_name'] = templateData.template_extra_name
+                    newParams.data['template_extra_content'] = templateData.template_extra_content
+                    //模拟数据
+                    newData.data['template_title'] = templateData.template_title
+                    newData.data['template_desc'] = templateData.template_desc
+                    newData.data['template_link'] = templateData.template_link
+                    newData.data['template_img'] = templateData.template_img
+                    newData.data['template_extra_name'] = templateData.template_extra_name
+                    newData.data['template_extra_content'] = templateData.template_extra_content
+                    break;
+                default:
+                    Toast.info('未知模板数据类型',1)
+                    return false
+            }
+            break;
+        default:
+            Toast.info('未知发送类型',1)
+            return false
+    }
+
+    return{
+        newParams,
+        newData,
+        sign,
+    }
 }

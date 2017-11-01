@@ -1,9 +1,9 @@
 {
   "name": "ws-kf-react",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "private": false,
   "dependencies": {
-    "antd-mobile": "^1.7.1",
+    "antd-mobile": "1.6.0",
     "autoprefixer": "7.1.2",
     "babel-core": "6.25.0",
     "babel-eslint": "7.2.3",
