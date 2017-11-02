@@ -7,6 +7,7 @@ import store from "./store/ConfigureStore";
 import { selectedSessionListItem } from "./actions/message/sessionList";
 import { getSendMessageDataSource } from "./pages/MessageSend";
 
+
 const WsKfInit = ({ access_token, callback } = {}) => {
     var box = document.getElementsByTagName("body")[0];
     var initDiv = document.createElement("div");

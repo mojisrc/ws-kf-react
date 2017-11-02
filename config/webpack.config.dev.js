@@ -231,7 +231,8 @@ module.exports = {
                 options: {
                   modifyVars: {
                       "@brand-primary": "#ff3b30" ,
-                      '@brand-primary-tap': '#CF5C4E'
+                      '@brand-primary-tap': '#CF5C4E',
+                      '@hd': '2px',
                   },
                 },
               },

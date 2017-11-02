@@ -133,9 +133,9 @@ ansi-styles@^3.0.0, ansi-styles@^3.1.0:
   dependencies:
     color-convert "^1.9.0"
 
-antd-mobile@1.6.0:
-  version "1.6.0"
-  resolved "https://registry.npmjs.org/antd-mobile/-/antd-mobile-1.6.0.tgz#327477f728c85abc9158e7eebe4b10671a9eacac"
+antd-mobile@1.7.1:
+  version "1.7.1"
+  resolved "https://registry.npmjs.org/antd-mobile/-/antd-mobile-1.7.1.tgz#03ce0943e307b8503bb6bb086f7bdcb32bc75cd2"
   dependencies:
     array-tree-filter "~1.0.0"
     babel-runtime "6.x"
@@ -153,21 +153,21 @@ antd-mobile@1.6.0:
     rc-notification "~2.0.0"
     rc-slider "~8.2.0"
     rc-steps "~2.5.1"
-    rc-swipeout "~1.3.0"
+    rc-swipeout "~1.4.6"
     rc-table "~5.4.0"
-    rc-tabs "~8.1.0"
+    rc-tabs "~9.1.0"
     rc-tooltip "~3.4.3"
     rc-touchable "~1.2.2"
-    react-native-camera-roll-picker "~1.1.6"
+    react-native-camera-roll-picker "~1.2.0"
     react-native-collapsible "^0.8.0"
     react-native-drawer-layout "~1.3.0"
     react-native-menu "~0.21.0"
     react-native-scrollable-tab-view "^0.7.2"
-    rmc-cascader "^4.1.1"
-    rmc-date-picker "^5.3.1"
-    rmc-list-view "^0.8.0"
-    rmc-nuka-carousel "^2.2.0"
-    rmc-picker "^3.8.0"
+    rmc-cascader "~4.3.4"
+    rmc-date-picker "~5.5.0"
+    rmc-list-view "~0.8.4"
+    rmc-nuka-carousel "~2.2.0"
+    rmc-picker "~4.0.1"
     rn-topview "~0.1.0"
     warning "^3.0.0"
 
@@ -3219,7 +3219,7 @@ gzip-size@3.0.0:
 
 hammerjs@^2.0.8:
   version "2.0.8"
-  resolved "http://registry.npm.taobao.org/hammerjs/download/hammerjs-2.0.8.tgz#04ef77862cff2bb79d30f7692095930222bf60f1"
+  resolved "https://registry.npmjs.org/hammerjs/-/hammerjs-2.0.8.tgz#04ef77862cff2bb79d30f7692095930222bf60f1"
 
 handle-thing@^1.2.5:
   version "1.2.5"
@@ -4222,7 +4222,7 @@ klaw@^1.0.0:
 
 kw-react-tween-state@^0.1.5:
   version "0.1.5"
-  resolved "http://registry.npm.taobao.org/kw-react-tween-state/download/kw-react-tween-state-0.1.5.tgz#744088988d35f14ccc2ca36af96bc09ece7ab78b"
+  resolved "https://registry.npmjs.org/kw-react-tween-state/-/kw-react-tween-state-0.1.5.tgz#744088988d35f14ccc2ca36af96bc09ece7ab78b"
   dependencies:
     raf "^3.1.0"
     tween-functions "^1.0.1"
@@ -4363,7 +4363,7 @@ lodash.cond@^4.3.0:
 
 lodash.debounce@^4.0.8:
   version "4.0.8"
-  resolved "http://registry.npm.taobao.org/lodash.debounce/download/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
+  resolved "https://registry.npmjs.org/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
 
 lodash.defaults@^4.0.1, lodash.defaults@^4.2.0:
   version "4.2.0"
@@ -4383,7 +4383,7 @@ lodash.foreach@^4.3.0:
 
 lodash.get@^4.4.2:
   version "4.4.2"
-  resolved "http://registry.npm.taobao.org/lodash.get/download/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
+  resolved "https://registry.npmjs.org/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
 
 lodash.isarguments@^3.0.0:
   version "3.1.0"
@@ -4661,7 +4661,7 @@ mkdirp@0.5.1, mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdi
 
 moment@2.x, moment@~2.18.1:
   version "2.18.1"
-  resolved "http://registry.npm.taobao.org/moment/download/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
+  resolved "https://registry.npmjs.org/moment/-/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
 
 ms@2.0.0:
   version "2.0.0"
@@ -4873,7 +4873,7 @@ object-keys@^1.0.8:
   version "1.0.11"
   resolved "https://registry.npmjs.org/object-keys/-/object-keys-1.0.11.tgz#c54601778ad560f1142ce0e01bcca8b56d13426d"
 
-object.omit@^2.0.0, object.omit@~2.0.0:
+object.omit@^2.0.0:
   version "2.0.1"
   resolved "http://registry.npm.taobao.org/object.omit/download/object.omit-2.0.1.tgz#1a9c744829f39dbb858c76ca3579ae2a54ebd1fa"
   dependencies:
@@ -4884,9 +4884,9 @@ obuf@^1.0.0, obuf@^1.1.1:
   version "1.1.1"
   resolved "https://registry.npmjs.org/obuf/-/obuf-1.1.1.tgz#104124b6c602c6796881a042541d36db43a5264e"
 
-omit.js@~1.0.0:
+omit.js@^1.0.0, omit.js@~1.0.0:
   version "1.0.0"
-  resolved "http://registry.npm.taobao.org/omit.js/download/omit.js-1.0.0.tgz#e013cb86a7517b9cf6f7cfb0ddb4297256a99288"
+  resolved "https://registry.npmjs.org/omit.js/-/omit.js-1.0.0.tgz#e013cb86a7517b9cf6f7cfb0ddb4297256a99288"
   dependencies:
     babel-runtime "^6.23.0"
 
@@ -5597,7 +5597,7 @@ querystringify@~1.0.0:
 
 raf@^3.1.0, raf@^3.3.0:
   version "3.4.0"
-  resolved "http://registry.npm.taobao.org/raf/download/raf-3.4.0.tgz#a28876881b4bc2ca9117d4138163ddb80f781575"
+  resolved "https://registry.npmjs.org/raf/-/raf-3.4.0.tgz#a28876881b4bc2ca9117d4138163ddb80f781575"
   dependencies:
     performance-now "^2.1.0"
 
@@ -5663,7 +5663,7 @@ rc-collapse@~1.7.0:
 
 rc-dialog@^6.4.0, rc-dialog@~6.5.7:
   version "6.5.11"
-  resolved "http://registry.npm.taobao.org/rc-dialog/download/rc-dialog-6.5.11.tgz#a6ef4d81a7801a54e9923273c605dd521d7fb142"
+  resolved "https://registry.npmjs.org/rc-dialog/-/rc-dialog-6.5.11.tgz#a6ef4d81a7801a54e9923273c605dd521d7fb142"
   dependencies:
     babel-runtime "6.x"
     create-react-class "^15.5.2"
@@ -5681,15 +5681,15 @@ rc-drawer@~0.4.9:
 
 rc-hammerjs@^0.6.6, rc-hammerjs@~0.6.0:
   version "0.6.9"
-  resolved "http://registry.npm.taobao.org/rc-hammerjs/download/rc-hammerjs-0.6.9.tgz#9a4ddbda1b2ec8f9b9596091a6a989842a243907"
+  resolved "https://registry.npmjs.org/rc-hammerjs/-/rc-hammerjs-0.6.9.tgz#9a4ddbda1b2ec8f9b9596091a6a989842a243907"
   dependencies:
     babel-runtime "6.x"
     hammerjs "^2.0.8"
     prop-types "^15.5.9"
 
 rc-input-number@~3.6.0:
-  version "3.6.8"
-  resolved "http://registry.npm.taobao.org/rc-input-number/download/rc-input-number-3.6.8.tgz#ba12b62805c0592793af44229c605b8b2c6a5ff8"
+  version "3.6.9"
+  resolved "https://registry.npmjs.org/rc-input-number/-/rc-input-number-3.6.9.tgz#1ea872dd68b8f297aef8400c63f05673a2ac03b8"
   dependencies:
     babel-runtime "6.x"
     classnames "^2.2.0"
@@ -5699,7 +5699,7 @@ rc-input-number@~3.6.0:
 
 rc-notification@~2.0.0:
   version "2.0.6"
-  resolved "http://registry.npm.taobao.org/rc-notification/download/rc-notification-2.0.6.tgz#76f3f71d9423bf4603a02d7aa0c4b094a46b8c67"
+  resolved "https://registry.npmjs.org/rc-notification/-/rc-notification-2.0.6.tgz#76f3f71d9423bf4603a02d7aa0c4b094a46b8c67"
   dependencies:
     babel-runtime "6.x"
     classnames "2.x"
@@ -5721,24 +5721,25 @@ rc-slider@~8.2.0:
 
 rc-steps@~2.5.1:
   version "2.5.2"
-  resolved "http://registry.npm.taobao.org/rc-steps/download/rc-steps-2.5.2.tgz#2ff2e03348ba8cc4114f0568e420add6ee273fae"
+  resolved "https://registry.npmjs.org/rc-steps/-/rc-steps-2.5.2.tgz#2ff2e03348ba8cc4114f0568e420add6ee273fae"
   dependencies:
     classnames "^2.2.3"
     lodash.debounce "^4.0.8"
     prop-types "^15.5.7"
 
-rc-swipeout@~1.3.0:
-  version "1.3.8"
-  resolved "https://registry.npmjs.org/rc-swipeout/-/rc-swipeout-1.3.8.tgz#ed9786c9ce6cee6357529190cd882da97fe9a6ff"
+rc-swipeout@~1.4.6:
+  version "1.4.7"
+  resolved "https://registry.npmjs.org/rc-swipeout/-/rc-swipeout-1.4.7.tgz#f332f6f89f2ce92f7f87e81ca4ba62fd117d821b"
   dependencies:
     babel-runtime "6.x"
-    object.omit "~2.0.0"
+    classnames "^2.2.5"
+    omit.js "^1.0.0"
     rc-hammerjs "^0.6.6"
     react-native-swipeout "~2.1.1"
 
 rc-table@~5.4.0:
   version "5.4.2"
-  resolved "http://registry.npm.taobao.org/rc-table/download/rc-table-5.4.2.tgz#b7c2ecfeee962bedc0b83000e3512c024f2e04eb"
+  resolved "https://registry.npmjs.org/rc-table/-/rc-table-5.4.2.tgz#b7c2ecfeee962bedc0b83000e3512c024f2e04eb"
   dependencies:
     babel-runtime "^6.23.0"
     component-classes "^1.2.6"
@@ -5748,15 +5749,17 @@ rc-table@~5.4.0:
     shallowequal "^0.2.2"
     warning "^3.0.0"
 
-rc-tabs@~8.1.0:
-  version "8.1.1"
-  resolved "https://registry.npmjs.org/rc-tabs/-/rc-tabs-8.1.1.tgz#58237aca82427cbb7bfdf3207e9b458bd6f8a5c1"
+rc-tabs@~9.1.0:
+  version "9.1.10"
+  resolved "https://registry.npmjs.org/rc-tabs/-/rc-tabs-9.1.10.tgz#4307af2c83314f2c5aa8feae09de08a71a3f3244"
   dependencies:
     babel-runtime "6.x"
     classnames "2.x"
     create-react-class "15.x"
+    lodash.debounce "^4.0.8"
     prop-types "15.x"
     rc-hammerjs "~0.6.0"
+    rc-util "^4.0.4"
     warning "^3.0.0"
 
 rc-tooltip@^3.4.2, rc-tooltip@~3.4.3:
@@ -5769,7 +5772,7 @@ rc-tooltip@^3.4.2, rc-tooltip@~3.4.3:
 
 rc-touchable@^1.0.0, rc-touchable@^1.0.2, rc-touchable@~1.2.2:
   version "1.2.3"
-  resolved "http://registry.npm.taobao.org/rc-touchable/download/rc-touchable-1.2.3.tgz#5f498324e3d0b9ba601a9c4834958eaa2c713618"
+  resolved "https://registry.npmjs.org/rc-touchable/-/rc-touchable-1.2.3.tgz#5f498324e3d0b9ba601a9c4834958eaa2c713618"
   dependencies:
     babel-runtime "6.x"
 
@@ -5870,13 +5873,13 @@ react-medium-image-zoom@2.0.4:
   version "2.0.4"
   resolved "https://registry.npmjs.org/react-medium-image-zoom/-/react-medium-image-zoom-2.0.4.tgz#3ea2eda8d49c5702a4d09a36479686844d508113"
 
-react-native-camera-roll-picker@~1.1.6:
-  version "1.1.9"
-  resolved "https://registry.npmjs.org/react-native-camera-roll-picker/-/react-native-camera-roll-picker-1.1.9.tgz#99bad3a9c117ad79e67044c420ce463ee18f29d3"
+react-native-camera-roll-picker@~1.2.0:
+  version "1.2.3"
+  resolved "https://registry.npmjs.org/react-native-camera-roll-picker/-/react-native-camera-roll-picker-1.2.3.tgz#b117fd3a2b9012dcccee1261a9bc427226b8d6d2"
 
 react-native-collapsible@^0.8.0:
   version "0.8.1"
-  resolved "http://registry.npm.taobao.org/react-native-collapsible/download/react-native-collapsible-0.8.1.tgz#af5e020e0b0615ad32f30f6262ae2008a4a56e3a"
+  resolved "https://registry.npmjs.org/react-native-collapsible/-/react-native-collapsible-0.8.1.tgz#af5e020e0b0615ad32f30f6262ae2008a4a56e3a"
   dependencies:
     prop-types "^15.5.10"
 
@@ -5892,20 +5895,20 @@ react-native-drawer-layout@~1.3.0:
 
 react-native-menu@~0.21.0:
   version "0.21.0"
-  resolved "http://registry.npm.taobao.org/react-native-menu/download/react-native-menu-0.21.0.tgz#ebc647862eb80ed00e2289397bf8b634b09b1e8b"
+  resolved "https://registry.npmjs.org/react-native-menu/-/react-native-menu-0.21.0.tgz#ebc647862eb80ed00e2289397bf8b634b09b1e8b"
   dependencies:
     react-timer-mixin "^0.13.3"
 
 react-native-scrollable-tab-view@^0.7.2:
   version "0.7.4"
-  resolved "http://registry.npm.taobao.org/react-native-scrollable-tab-view/download/react-native-scrollable-tab-view-0.7.4.tgz#623a047cbfab35a27b8689095af524e9aac74b62"
+  resolved "https://registry.npmjs.org/react-native-scrollable-tab-view/-/react-native-scrollable-tab-view-0.7.4.tgz#623a047cbfab35a27b8689095af524e9aac74b62"
   dependencies:
     react-static-container "^1.0.1"
     react-timer-mixin "^0.13.3"
 
 react-native-swipeout@~2.1.1:
   version "2.1.5"
-  resolved "http://registry.npm.taobao.org/react-native-swipeout/download/react-native-swipeout-2.1.5.tgz#eb3a7ac3cf9418441b84a3a6fa7aa64b701598a4"
+  resolved "https://registry.npmjs.org/react-native-swipeout/-/react-native-swipeout-2.1.5.tgz#eb3a7ac3cf9418441b84a3a6fa7aa64b701598a4"
   dependencies:
     react-tween-state "^0.1.5"
 
@@ -5921,12 +5924,12 @@ react-redux@^5.0.6:
     prop-types "^15.5.10"
 
 react-static-container@^1.0.1:
-  version "1.0.1"
-  resolved "http://registry.npm.taobao.org/react-static-container/download/react-static-container-1.0.1.tgz#694c0dd68a896b879519afb548399cc1989c9ab0"
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/react-static-container/-/react-static-container-1.0.2.tgz#30a4f7548860be1d55d5eb4c20645b835c2bdf34"
 
 react-sticky@^5.0.2:
   version "5.0.8"
-  resolved "http://registry.npm.taobao.org/react-sticky/download/react-sticky-5.0.8.tgz#d5f85f96977f410081d792ab81886c622c5d8b14"
+  resolved "https://registry.npmjs.org/react-sticky/-/react-sticky-5.0.8.tgz#d5f85f96977f410081d792ab81886c622c5d8b14"
   dependencies:
     prop-types "^15.5.8"
 
@@ -6283,7 +6286,7 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^2.0.0"
     inherits "^2.0.1"
 
-rmc-cascader@^4.1.1:
+rmc-cascader@~4.3.4:
   version "4.3.5"
   resolved "https://registry.npmjs.org/rmc-cascader/-/rmc-cascader-4.3.5.tgz#1447b8df3d10774de4494a3459deaa170b78d980"
   dependencies:
@@ -6291,7 +6294,7 @@ rmc-cascader@^4.1.1:
     babel-runtime "6.x"
     rmc-picker "^4.0.1"
 
-rmc-date-picker@^5.3.1:
+rmc-date-picker@~5.5.0:
   version "5.5.0"
   resolved "https://registry.npmjs.org/rmc-date-picker/-/rmc-date-picker-5.5.0.tgz#00d16317eebba368c81524fcb23d9e05ac77dd89"
   dependencies:
@@ -6299,7 +6302,7 @@ rmc-date-picker@^5.3.1:
     moment "2.x"
     rmc-picker "^4.0.1"
 
-rmc-list-view@^0.8.0:
+rmc-list-view@~0.8.4:
   version "0.8.14"
   resolved "https://registry.npmjs.org/rmc-list-view/-/rmc-list-view-0.8.14.tgz#05d28b2268ab26e46b2da49b0919c0e0d63c46ba"
   dependencies:
@@ -6311,7 +6314,7 @@ rmc-list-view@^0.8.0:
     warning "^3.0.0"
     zscroller "~0.4.0"
 
-rmc-nuka-carousel@^2.2.0:
+rmc-nuka-carousel@~2.2.0:
   version "2.2.1"
   resolved "https://registry.npmjs.org/rmc-nuka-carousel/-/rmc-nuka-carousel-2.2.1.tgz#c4238193a298be128a2f13ecb5c26fd77ad00ccd"
   dependencies:
@@ -6320,20 +6323,9 @@ rmc-nuka-carousel@^2.2.0:
     kw-react-tween-state "^0.1.5"
     object-assign "^4.1.0"
 
-rmc-picker@^3.8.0:
-  version "3.10.7"
-  resolved "https://registry.npmjs.org/rmc-picker/-/rmc-picker-3.10.7.tgz#16d6761797c8fbd841c2382098b733bcf9f6ab90"
-  dependencies:
-    babel-runtime "6.x"
-    classnames "2.x"
-    create-react-class "15.x"
-    rc-dialog "^6.4.0"
-    rc-touchable "^1.0.2"
-    zscroller "~0.3.0"
-
-rmc-picker@^4.0.1:
+rmc-picker@^4.0.1, rmc-picker@~4.0.1:
   version "4.0.4"
-  resolved "http://registry.npm.taobao.org/rmc-picker/download/rmc-picker-4.0.4.tgz#d77627f98be0497b022925314344f262f5ce8008"
+  resolved "https://registry.npmjs.org/rmc-picker/-/rmc-picker-4.0.4.tgz#d77627f98be0497b022925314344f262f5ce8008"
   dependencies:
     babel-runtime "6.x"
     classnames "2.x"
@@ -6344,7 +6336,7 @@ rmc-picker@^4.0.1:
 
 rn-topview@~0.1.0:
   version "0.1.6"
-  resolved "http://registry.npm.taobao.org/rn-topview/download/rn-topview-0.1.6.tgz#b1b1216caf730f8547cd23c9b918ad0288454b11"
+  resolved "https://registry.npmjs.org/rn-topview/-/rn-topview-0.1.6.tgz#b1b1216caf730f8547cd23c9b918ad0288454b11"
 
 run-async@^2.2.0:
   version "2.3.0"
@@ -7522,7 +7514,7 @@ yargs@~3.10.0:
 
 zscroller@~0.3.0:
   version "0.3.1"
-  resolved "http://registry.npm.taobao.org/zscroller/download/zscroller-0.3.1.tgz#def4d040378de4297fd3cd31169119e65363dcf7"
+  resolved "https://registry.npmjs.org/zscroller/-/zscroller-0.3.1.tgz#def4d040378de4297fd3cd31169119e65363dcf7"
   dependencies:
     babel-runtime "6.x"
     raf "^3.3.0"
