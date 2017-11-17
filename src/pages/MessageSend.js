@@ -120,6 +120,7 @@ export default class MessageSend extends Component {
         } = SendMessageDataSource
 
         if(isSend!==false){
+            // Toast.info('Api发送成功')
             socketInstance.send(JSON.stringify(newParams))
         }
 
@@ -144,7 +145,7 @@ export default class MessageSend extends Component {
         return (
             <View className={`${styles.view8}`}>
                 <Popover
-                    mask
+                    mask = {false}
                     visible={this.state.visible}
                     overlay={
                         <EmojiGroup

@@ -234,6 +234,7 @@ class Container extends Component {
                 }
                 break;
             case 'message':
+                // Toast.info('message',1)
                 if(data.code===0){
                     const {
                         sign,

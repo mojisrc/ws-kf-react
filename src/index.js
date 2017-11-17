@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import store from "./store/ConfigureStore";
 import { selectedSessionListItem } from "./actions/message/sessionList";
 import { getSendMessageDataSource } from "./pages/MessageSend";
-
+import { Toast } from 'antd-mobile';
 
 const WsKfInit = ({ access_token, callback } = {}) => {
     var box = document.getElementsByTagName("body")[0];
@@ -65,7 +65,7 @@ const SendMessage = (params) => {
         const {
             newParams,
         } = SendMessageDataSource
-
+        // Toast.info('自定义发送成功')
         socketInstance.send(JSON.stringify(newParams))
 
     }

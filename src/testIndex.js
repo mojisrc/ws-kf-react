@@ -7,12 +7,12 @@ import { WsKfInit,WsKfShowPanel,SendMessage } from "./index";
 
 // token
 // 李杰   4578c4c14328771b3c347af42e5ad5c5871523df
-// 刘金萌  fc1817068f2c96b38d82b219ff2a344e8623f5cc
+// 刘金萌  a8ea959d0d4dd95223efa933108b363b61f68d79
 
 class App extends Component {
     componentDidMount(){
         WsKfInit({
-            access_token: 'fc1817068f2c96b38d82b219ff2a344e8623f5cc',
+            access_token: 'a8ea959d0d4dd95223efa933108b363b61f68d79',
             callback: (e)=>{
                 console.log(e);
             }
@@ -37,21 +37,21 @@ class App extends Component {
                     style={{ margin: "0 1rem" }}
                     onClick={() => {
                         WsKfShowPanel({id:1239})
-                        SendMessage({
-                            kfId: 1239,
-                            content_type:'template',
-                            templateData:{
-                                template_title: '晋皇羊肥小米：妈妈米黄小米五谷杂粮生态米',
-                                template_desc: '套餐包括：400g五年/三年/两年休耕基地米各一盒',
-                                template_link: 'http://m.jhyfxm.com/mall/goodsDetail/992',
-                                template_img: 'http://shengxing.oss-cn-beijing.aliyuncs.com/app/20170911/1505127015291203.png',
-                                template_extra_name: 'goods',
-                                template_extra_content: {
-                                    relation_id: 992,
-                                },
-                            }
-
-                        })
+                        // SendMessage({
+                        //     kfId: 1239,
+                        //     content_type:'template',
+                        //     templateData:{
+                        //         template_title: '晋皇羊肥小米：妈妈米黄小米五谷杂粮生态米',
+                        //         template_desc: '套餐包括：400g五年/三年/两年休耕基地米各一盒',
+                        //         template_link: 'http://m.jhyfxm.com/mall/goodsDetail/992',
+                        //         template_img: 'http://shengxing.oss-cn-beijing.aliyuncs.com/app/20170911/1505127015291203.png',
+                        //         template_extra_name: 'goods',
+                        //         template_extra_content: {
+                        //             relation_id: 992,
+                        //         },
+                        //     }
+                        //
+                        // })
                     }}
                 >
                     联系客服

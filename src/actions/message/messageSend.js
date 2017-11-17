@@ -12,7 +12,11 @@ export const addMessageItemData = ({data,id,allMessageListData,removeSign})=>{
             const removeSignIndex = newData[id].list.findIndex((e)=>{return e.sign===removeSign})
             newData[id].list[removeSignIndex] = newItemData
         }else {
-            newData[id].list.unshift(newItemData)
+            if(newData[id]&&newData[id].list){
+                newData[id].list.unshift(newItemData)
+            }else {
+                newData[id].list = [newItemData]
+            }
         }
         dispatch({
             type : types.message.ADD_MESSAGE_ITEM_DATA,
